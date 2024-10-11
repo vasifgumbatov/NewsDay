@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <!-- Primary theme colors -->
+        <item name="colorPrimary">@color/blueCb</item>
+        <item name="colorAccent">@color/blueCb</item>
+
+        <!-- This controls activated widget colors (like a checked checkbox) -->
+        <item name="colorControlActivated">@color/blueCb</item>
+    </style>
+
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="colorControlActivated">@color/blue</item>
+    </style>
+
+    <style name="NavigationTheme" parent="AppTheme">
+        <item name="itemIconTint">@android:color/white</item>
+        <item name="itemTextColor">@android:color/white</item>
+        <item name="android:background">#00ffffff</item>
+    </style>
+
+</resources>

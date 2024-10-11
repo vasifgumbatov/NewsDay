@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/profileLinear"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/black"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="39dp"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintEnd_toStartOf="@id/nameTV"
+        app:layout_constraintStart_toStartOf="@id/profileLinear"
+        app:layout_constraintTop_toTopOf="@id/profileLinear" />
+
+    <TextView
+        android:id="@+id/nameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="55dp"
+        android:fontFamily="@font/poppins_bold_font"
+        android:text="@string/vasif_humbatov"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/profileImage"
+        app:layout_constraintTop_toTopOf="@id/profileLinear" />
+
+    <ImageView
+        android:id="@+id/communityIV"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/community_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileLinear" />
+
+    <TextView
+        android:id="@+id/communityTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/poppins_regular_font"
+        android:text="@string/communities"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/communityIV"
+        app:layout_constraintTop_toBottomOf="@id/profileLinear" />
+
+    <ImageView
+        android:id="@+id/modeIV"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/darkmode_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/communityIV" />
+
+    <TextView
+        android:id="@+id/modeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/poppins_regular_font"
+        android:text="@string/dark_mode"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/modeIV"
+        app:layout_constraintTop_toBottomOf="@id/communityTV" />
+
+    <ImageView
+        android:id="@+id/languageIV"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/ic_language"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/modeIV" />
+
+    <TextView
+        android:id="@+id/languageTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="38.5dp"
+        android:fontFamily="@font/poppins_regular_font"
+        android:text="@string/language"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/languageIV"
+        app:layout_constraintTop_toBottomOf="@id/modeTV" />
+
+    <ImageView
+        android:id="@+id/aboutUsIV"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/ic_about_us"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/languageIV" />
+
+    <TextView
+        android:id="@+id/aboutUsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="39.5dp"
+        android:fontFamily="@font/poppins_regular_font"
+        android:text="@string/about_us"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@id/aboutUsIV"
+        app:layout_constraintTop_toBottomOf="@id/languageTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
