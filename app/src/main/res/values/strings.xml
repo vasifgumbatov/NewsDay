@@ -12,7 +12,6 @@
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign Up</string>
     <string name="signUp"><u>Sign Up</u></string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="the_nextgen_short_news_app">The NextGen short NEWS app</string>
     <string name="get_started">Get Started</string>
@@ -47,4 +46,6 @@
     <string name="about_us">About Us</string>
     <string name="search_by_city_or_country">Search by city or country</string>
     <string name="search">Search</string>
+    <string name="favorite_news">Favorite News</string>
+    <string name="switchButton">ChangeMode</string>
 </resources>

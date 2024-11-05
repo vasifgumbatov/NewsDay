@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/homePage"
-        android:name="com.vasifgumbatov.news.ui.home.HomeFragment"
+        android:name="com.vasifgumbatov.news.view.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favouritePage"
-        android:name="com.vasifgumbatov.news.ui.favourite.FavoriteFragment"
+        android:name="com.vasifgumbatov.news.view.ui.favourite.FavoriteFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
     <fragment
         android:id="@+id/settingsPage"
-        android:name="com.vasifgumbatov.news.ui.profile.ProfileFragment"
+        android:name="com.vasifgumbatov.news.view.ui.profile.ProfileFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/weatherFragment2"
-        android:name="com.vasifgumbatov.news.ui.weather.WeatherFragment"
+        android:name="com.vasifgumbatov.news.view.ui.weather.WeatherFragment"
         android:label="fragment_weather"
         tools:layout="@layout/fragment_weather" />
 </navigation>

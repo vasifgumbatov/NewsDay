@@ -7,18 +7,23 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.vasifgumbatov.news.ui.home.HomeFragment"
+        android:name="com.vasifgumbatov.news.view.ui.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.vasifgumbatov.news.ui.main.MainFragment"
+        android:name="com.vasifgumbatov.news.view.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.vasifgumbatov.news.ui.profile.ProfileFragment"
+        android:name="com.vasifgumbatov.news.view.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
     </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.vasifgumbatov.news.view.ui.favourite.FavoriteFragment"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
 </navigation>

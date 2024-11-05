@@ -12,7 +12,6 @@ kotlinxCoroutinesCore = "1.7.3"
 material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
-okhttpVersion = "4.12.0"
 retrofit = "2.11.0"
 navigationFragmentKtx = "2.8.1"
 navigationUiKtx = "2.8.1"
@@ -39,28 +38,19 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-
-
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
-
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
-
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-
 okHttp = {group ="com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp"}
 loggingInterceptor = {group ="com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor"}
-
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil"}
-
 hilt = {group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hiltCompiler = {group ="com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
