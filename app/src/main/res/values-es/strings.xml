@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gazette">gaceta</string>
+    <string name="news_day">DíaDeNoticias</string>
+    <string name="home_h">Inicio</string>
+    <string name="profile_h">Perfil</string>
+    <string name="drawerOpen">abrirCajón</string>
+    <string name="drawerClose">cerrarCajón</string>
+    <string name="top_headlines">Titulares</string>
+    <string name="news_title">Título de Noticias</string>
+    <string name="date">Fecha</string>
+    <string name="news_description_goes_here">Descripción de la noticia va aquí…</string>
+    <string name="home">Inicio</string>
+    <string name="communities">Nuestra Comunidad</string>
+    <string name="dark_mode">Modo Oscuro</string>
+    <string name="language">Idioma</string>
+    <string name="about_us">Sobre Nosotros</string>
+    <string name="search_by_city_or_country">Buscar por ciudad o país…</string>
+    <string name="search">Buscar</string>
+    <string name="favorite_news">Noticias Favoritas</string>
+    <string name="switchButton">CambiarModo</string>
+    <string name="author">Autor</string>
+    <string name="url">URL</string>
+    <string name="content">Contenido</string>
+    <string name="detail_news">Detalles de Noticias</string>
+    <string name="about_us_text">
+      ¡Bienvenido a nuestra App de Noticias y Clima! Nuestra misión es mantenerte informado y conectado con el mundo con actualizaciones de noticias en tiempo real e información meteorológica precisa al alcance de tu mano.&#10;&#10;\n
+    Con esta app, puedes acceder fácilmente a los últimos titulares, y al hacer clic en los enlaces, serás redirigido a fuentes confiables para leer cada historia en su totalidad. Además, ofrecemos información diaria sobre el clima para ayudarte a planificar tu día, y nuestra función de búsqueda te permite verificar las condiciones meteorológicas para cualquier país que elijas.&#10;&#10;\n
+      Estamos dedicados a proporcionar una experiencia simple y fácil de usar que te ayude a mantenerte al día y preparado para lo que el día traiga. ¡Gracias por elegir nuestra app y disfruta explorando el mundo a través de las actualizaciones de noticias y clima con nosotros!
+</string>
+    <string name="change">Cambiar</string>
+    <string name="next">Siguiente</string>
+    <string name="everyday_new_ntop_news">Todos los días Nuevas\nNoticias Principales</string>
+    <string name="intro_text_2">La capacidad de ver todas las noticias con un solo toque en cualquier lugar</string>
+    <string name="intro_text_3">No te olvides del clima diario también</string>
+    <string name="search_news_by_name">Buscar noticias por nombre</string>
+    <string name="news_details">Detalles de Noticias</string>
+    <string name="news">Noticias</string>
+    <string name="day">Día</string>
+    <string name="russian">Ruso(ru)</string>
+    <string name="spanish">Español(es)</string>
+    <string name="german">Alemán(de)</string>
+    <string name="english">Inglés(en)</string>
+    <string name="lasted_news">Últimas noticias</string>
+    <string name="our">Nuestro</string>
+    <string name="community">Comunidad</string>
+    <string name="about">Acerca</string>
+    <string name="us">De nosotros</string>
+</resources>

@@ -1,6 +1,7 @@
 package com.vasifgumbatov.news.data.remote.response
 
-sealed class ApiResult<out T> {
-    data class Success<T>(val data: T?): ApiResult<T>()
-    data class Error(val error: ErrorModel?): ApiResult<Nothing>()
+sealed class ApiState<out T> {
+    data class Success<T>(val data: T?): ApiState<T>()
+    data class Error(val error: ErrorModel?): ApiState<Nothing>()
 }
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gazette">газета</string>
+    <string name="news_day">ДеньНовостей</string>
+    <string name="home_h">Главная</string>
+    <string name="profile_h">Профиль</string>
+    <string name="drawerOpen">открытьЯщик</string>
+    <string name="drawerClose">закрытьЯщик</string>
+    <string name="top_headlines">Главные Заголовки</string>
+    <string name="news_title">Заголовок Новости</string>
+    <string name="date">Дата</string>
+    <string name="news_description_goes_here">Описание новости здесь…</string>
+    <string name="home">Главная</string>
+    <string name="communities">Наше Сообщество</string>
+    <string name="dark_mode">Темный Режим</string>
+    <string name="language">Язык</string>
+    <string name="about_us">О Нас</string>
+    <string name="search_by_city_or_country">Поиск по городу или стране…</string>
+    <string name="search">Поиск</string>
+    <string name="favorite_news">Избранные Новости</string>
+    <string name="switchButton">СменитьРежим</string>
+    <string name="author">Автор</string>
+    <string name="url">URL</string>
+    <string name="content">Содержание</string>
+    <string name="detail_news">Детали Новостей</string>
+    <string name="about_us_text">
+      Добро пожаловать в наше приложение для новостей и погоды! Наша миссия - держать вас в курсе и на связи с миром с помощью обновлений новостей в реальном времени и точной информации о погоде у вас под рукой.&#10;&#10;\n
+    С этим приложением вы можете легко получить доступ к последним заголовкам, и, нажимая на ссылки, вы будете перенаправлены к надежным источникам, чтобы прочитать каждую историю полностью. В дополнение к этому, мы предлагаем ежедневные сведения о погоде, чтобы помочь вам спланировать ваш день, и наша функция поиска позволяет проверять погодные условия для любой страны, которую вы выберете.&#10;&#10;\n
+      Мы стремимся предоставлять простой и удобный пользовательский опыт, который помогает вам быть в курсе и готовым ко всему, что принесет день. Спасибо, что выбрали наше приложение, и наслаждайтесь исследованием мира через обновления новостей и погоды вместе с нами!
+</string>
+    <string name="change">Изменить</string>
+    <string name="next">Далее</string>
+    <string name="everyday_new_ntop_news">Каждый день новые\nГлавные Новости</string>
+    <string name="intro_text_2">Возможность просматривать все новости одним касанием в любом месте</string>
+    <string name="intro_text_3">Не забывайте также о ежедневной погоде</string>
+    <string name="search_news_by_name">Искать новости по названию</string>
+    <string name="news_details">Детали новостей</string>
+    <string name="news">Новости</string>
+    <string name="day">День</string>
+    <string name="russian">Русский(ru)</string>
+    <string name="spanish">Испанский(es)</string>
+    <string name="german">Немецкий(de)</string>
+    <string name="english">Английский(en)</string>
+    <string name="lasted_news">Последние новости</string>
+    <string name="our">Наш</string>
+    <string name="community">Сообщество</string>
+    <string name="about">О</string>
+    <string name="us">Нас</string>
+</resources>

@@ -4,18 +4,30 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blueScreen">#0F6DDC</color>
     <color name="blue">#0F6DDC</color>
+    <color name="postbgstart">#6196E4</color>
     <color name="news2day">#0F6DDC</color>
-    <color name="loginButton">#0F6DDC</color>
-    <color name="signUpColor">#0F6DDC</color>
     <color name="errorColor">#FF0000</color>
     <color name="blueCb">#1976D2</color>
     <color name="red">#FF0000</color>
     <color name="grey">#808080</color>
-    <color name="cyan">#00FFFF</color>
     <color name="selected">#FF3A44</color>
     <color name="unSelected">#808080</color>
     <color name="profileBG">#242424</color>
     <color name="backBG">#EEF1F4</color>
     <color name="transparent">#00000000</color>
+    <color name="postBg">#EFE7E7</color>
+
+    <color name="minus_red">#F44336</color>
+    <color name="plus_cyan">#199696</color>
+    <color name="divider_color">#3378909C</color>
+    <color name="text_color">#37474F</color>
+
+<!--    light-->
+    <color name="textColor">#000000</color>
+    <color name="textColorHome">#FFFFFF</color>
+    <color name="background">#FFFFFF</color>
+    <color name="imageBTN">#000000</color>
+    <color name="iconColor">#000000</color>
+
 
 </resources>

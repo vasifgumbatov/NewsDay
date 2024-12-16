@@ -1,21 +1,19 @@
 package com.vasifgumbatov.news.view.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.databinding.FragmentMainBinding
 import com.vasifgumbatov.news.view.ui.core.CoreFragment
-import com.vasifgumbatov.news.view.ui.favourite.FavoriteFragment
-import com.vasifgumbatov.news.view.ui.home.HomeFragment
-import com.vasifgumbatov.news.view.ui.profile.ProfileFragment
-import com.vasifgumbatov.news.view.ui.weather.WeatherFragment
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainFragment : CoreFragment<FragmentMainBinding>() {
+class MainFragment @Inject constructor() : CoreFragment<FragmentMainBinding>() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,37 +25,9 @@ class MainFragment : CoreFragment<FragmentMainBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val navHost = childFragmentManager.findFragmentById(R.id.bottomMenuContainer) as NavHostFragment
 
-        binding?.bottomNavigation?.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.homePage -> {
-                    replaceFragment(HomeFragment())
-                    true
-                }
+        binding?.bottomNavigation?.setupWithNavController(navHost.navController)
 
-                R.id.favouritePage -> {
-                    replaceFragment(FavoriteFragment())
-                    true
-                }
-
-                R.id.profilePage -> {
-                    replaceFragment(ProfileFragment())
-                    true
-                }
-
-                R.id.weatherPage -> {
-                    replaceFragment(WeatherFragment())
-                    true
-                }
-
-                else -> false
-            }
-        }
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        childFragmentManager.beginTransaction()
-            .replace(R.id.bottomMenuContainer, fragment)
-            .commit()
     }
 }

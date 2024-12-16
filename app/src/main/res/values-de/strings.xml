@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gazette">Gazette</string>
+    <string name="news_day">Nachrichtentag</string>
+    <string name="home_h">Startseite</string>
+    <string name="profile_h">Profil</string>
+    <string name="drawerOpen">Schublade öffnen</string>
+    <string name="drawerClose">Schublade schließen</string>
+    <string name="top_headlines">Top-Schlagzeilen</string>
+    <string name="news_title">Nachrichtentitel</string>
+    <string name="date">Datum</string>
+    <string name="news_description_goes_here">Nachrichtenbeschreibung kommt hier…</string>
+    <string name="home">Startseite</string>
+    <string name="communities">Unsere Gemeinschaft</string>
+    <string name="dark_mode">Dunkelmodus</string>
+    <string name="language">Sprache</string>
+    <string name="about_us">Über uns</string>
+    <string name="search_by_city_or_country">Nach Stadt oder Land suchen…</string>
+    <string name="search">Suchen</string>
+    <string name="favorite_news">Lieblingsnachrichten</string>
+    <string name="switchButton">Modus ändern</string>
+    <string name="author">Autor</string>
+    <string name="url">URL</string>
+    <string name="content">Inhalt</string>
+    <string name="detail_news">Detailnachrichten</string>
+    <string name="about_us_text">
+      Willkommen bei unserer Nachrichten- und Wetter-App! Unsere Mission ist es, Sie mit Echtzeit-Nachrichten-Updates und genauen Wetterinformationen auf dem Laufenden zu halten und zu verbinden.&#10;&#10;\n
+    Mit dieser App können Sie ganz einfach die neuesten Schlagzeilen abrufen. Durch Klicken auf die Links werden Sie zu zuverlässigen Quellen weitergeleitet, um jede Geschichte vollständig zu lesen. Außerdem bieten wir tägliche Wetterinformationen, die Ihnen bei der Tagesplanung helfen, und unsere Suchfunktion ermöglicht es Ihnen, die Wetterbedingungen für jedes gewünschte Land zu überprüfen.&#10;&#10;\n
+      Wir sind bestrebt, eine einfache und benutzerfreundliche Erfahrung zu bieten, die Ihnen hilft, informiert zu bleiben und auf alles vorbereitet zu sein, was der Tag bringt. Vielen Dank, dass Sie sich für unsere App entschieden haben, und viel Spaß beim Erkunden der Welt durch Nachrichten- und Wetter-Updates mit uns!
+</string>
+    <string name="change">Ändern</string>
+    <string name="next">Weiter</string>
+    <string name="everyday_new_ntop_news">Täglich neue\nTop-Nachrichten</string>
+    <string name="intro_text_2">Die Möglichkeit, alle Nachrichten mit einer einzigen Berührung überall anzuzeigen</string>
+    <string name="intro_text_3">Vergessen Sie auch nicht Ihr tägliches Wetter</string>
+    <string name="search_news_by_name">Nachrichten nach Name suchen</string>
+    <string name="news_details">Nachrichtendetails</string>
+    <string name="news">Nachrichten</string>
+    <string name="day">Tag</string>
+    <string name="russian">Russisch(ru)</string>
+    <string name="spanish">Spanisch(es)</string>
+    <string name="german">Deutsch(de)</string>
+    <string name="english">Englisch(en)</string>
+    <string name="lasted_news">Neueste Nachrichten</string>
+    <string name="our">Unser</string>
+    <string name="community">Gemeinschaft</string>
+    <string name="about">Über</string>
+    <string name="us">Uns</string>
+</resources>

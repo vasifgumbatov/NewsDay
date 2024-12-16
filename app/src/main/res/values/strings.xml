@@ -1,51 +1,49 @@
 <resources>
-    <string name="app_name">News</string>
+    <string name="app_name" translatable="false">News</string>
     <string name="gazette">gazette</string>
     <string name="news_day">NewsDay</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="sign_in_with">Sign in with</string>
-    <string name="apple">apple</string>
-    <string name="google">google</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="signUp"><u>Sign Up</u></string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="the_nextgen_short_news_app">The NextGen short NEWS app</string>
-    <string name="get_started">Get Started</string>
-    <string name="sign_up_su">Sign Up</string>
-    <string name="full_name">Full Name</string>
-    <string name="email_su">Email</string>
-    <string name="phone">Phone</string>
-    <string name="password_su">Password</string>
-    <string name="by_continuing_you_accept_our_privacy_policy">By continuing you accept our Privacy Policy</string>
-    <string name="facebook">fb</string>
     <string name="home_h">Home</string>
     <string name="profile_h">Profile</string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
-    <string name="business">Business</string>
-    <string name="currency">Currency</string>
-    <string name="remember_me">Remember Me</string>
-    <string name="sport">Sport</string>
-    <string name="entertainment">Entertainment</string>
     <string name="top_headlines">Top Headlines</string>
-    <string name="see_all">See All</string>
     <string name="news_title">News Title</string>
     <string name="date">Date</string>
-    <string name="news_description_goes_here">News description goes here...</string>
-    <string name="vasif_humbatov">Vasif Humbatov</string>
-    <string name="_994777777777">+994777777777</string>
+    <string name="news_description_goes_here">News description goes here…</string>
     <string name="home">Home</string>
-    <string name="news_and_updates">News and Updates</string>
-    <string name="communities">Communities</string>
+    <string name="communities">Our Community</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="language">Language</string>
     <string name="about_us">About Us</string>
-    <string name="search_by_city_or_country">Search by city or country</string>
+    <string name="search_by_city_or_country">Search by city or country…</string>
     <string name="search">Search</string>
     <string name="favorite_news">Favorite News</string>
     <string name="switchButton">ChangeMode</string>
+    <string name="author">Author</string>
+    <string name="url">Url</string>
+    <string name="content">Content</string>
+    <string name="detail_news">Detail News</string>
+    <string name="about_us_text">
+     Welcome to our News and Weather App! Our mission is to keep you informed and connected to the world with real-time news updates and accurate weather information at your fingertips.&#10;&#10;\n
+    With this app, you can easily access the latest headlines, and by clicking on the links, you’ll be redirected to reliable sources to read each story in full. Alongside, we offer daily weather insights to help you plan your day, and our search feature allows you to check weather conditions for any country you choose.&#10;&#10;\n
+     We’re dedicated to providing a simple and user-friendly experience that helps you stay up-to-date and prepared for whatever the day brings. Thank you for choosing our app, and enjoy exploring the world through news and weather updates with us!
+</string>
+    <string name="change">Change</string>
+    <string name="next">Next</string>
+    <string name="everyday_new_ntop_news">Everyday New\nTop News</string>
+    <string name="intro_text_2">The ability to view all news with a single touch anywhere</string>
+    <string name="intro_text_3">Don\'t forget your daily weather too</string>
+    <string name="search_news_by_name">Search news by name</string>
+    <string name="news_details">News Details</string>
+    <string name="news">News</string>
+    <string name="day">Day</string>
+    <string name="russian">Russian(ru)</string>
+    <string name="spanish">Spanish(es)</string>
+    <string name="german">German(de)</string>
+    <string name="lasted_news">Lasted News</string>
+    <string name="english">English(en)</string>
+    <string name="our">Our</string>
+    <string name="community">Community</string>
+    <string name="about">About</string>
+    <string name="us">Us</string>
 </resources>

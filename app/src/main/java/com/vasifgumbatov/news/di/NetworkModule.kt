@@ -4,8 +4,8 @@ import android.content.Context
 import com.vasifgumbatov.news.data.local.dao.FavoriteNewsDao
 import com.vasifgumbatov.news.data.local.db.FavoriteNewsDatabase
 import com.vasifgumbatov.news.data.local.repository.FavoriteNewsRepository
-import com.vasifgumbatov.news.data.remote.api.NewsApiService
-import com.vasifgumbatov.news.data.remote.api.WeatherApiService
+import com.vasifgumbatov.news.data.remote.api.NewsDataSource
+import com.vasifgumbatov.news.data.remote.api.WeatherDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,11 +29,6 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideNewsApiService(@NewsRetrofit retrofit: Retrofit): NewsApiService {
-        return retrofit.create(NewsApiService::class.java)
-    }
-
-    @Provides
     @WeatherRetrofit
     fun provideWeatherRetrofit(): Retrofit {
         return Retrofit.Builder()
@@ -43,8 +38,13 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideWeatherApiService(@WeatherRetrofit retrofit: Retrofit): WeatherApiService {
-        return retrofit.create(WeatherApiService::class.java)
+    fun provideNewsApiService(@NewsRetrofit retrofit: Retrofit): NewsDataSource {
+        return retrofit.create(NewsDataSource::class.java)
+    }
+
+    @Provides
+    fun provideWeatherApiService(@WeatherRetrofit retrofit: Retrofit): WeatherDataSource {
+        return retrofit.create(WeatherDataSource::class.java)
     }
 
     @Provides

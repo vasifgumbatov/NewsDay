@@ -1,25 +1,37 @@
 package com.vasifgumbatov.news.data.remote.api
 
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiManager {
 
-    var retrofit: Retrofit = Retrofit.Builder()
+    private var okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor()).apply {
+            HttpLoggingInterceptor.Level.BODY
+        }
+        .build()
+
+    //news
+    private var newsRetrofit: Retrofit = Retrofit.Builder()
         .baseUrl("https://newsapi.org/v2/")
         .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
         .build()
 
-    var retrofit2: Retrofit = Retrofit.Builder()
+    //weather
+    private var weatherRetrofit: Retrofit = Retrofit.Builder()
         .baseUrl("https://api.weatherapi.com/v1/")
         .addConverterFactory(GsonConverterFactory.create())
+        .client(okHttpClient)
         .build()
 
-    fun newsApiService(): NewsApiService {
-        return retrofit.create(NewsApiService::class.java)
+    fun newsApiService(): NewsDataSource {
+        return newsRetrofit.create(NewsDataSource::class.java)
     }
 
-    fun weatherApiService(): WeatherApiService {
-        return retrofit2.create(WeatherApiService::class.java)
+    fun weatherApiService(): WeatherDataSource {
+        return weatherRetrofit.create(WeatherDataSource::class.java)
     }
 }

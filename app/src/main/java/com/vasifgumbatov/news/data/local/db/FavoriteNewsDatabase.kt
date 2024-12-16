@@ -4,12 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.vasifgumbatov.news.data.local.dao.FavoriteNewsDao
 import com.vasifgumbatov.news.data.local.entity.FavoriteEntity
 
-@Database(entities = [FavoriteEntity::class], version = 2, exportSchema = false)
+@Database(entities = [FavoriteEntity::class], version = 2)
 abstract class FavoriteNewsDatabase : RoomDatabase() {
     abstract fun favoriteNewsDao(): FavoriteNewsDao
 
@@ -23,7 +21,9 @@ abstract class FavoriteNewsDatabase : RoomDatabase() {
                     context.applicationContext,
                     FavoriteNewsDatabase::class.java,
                     "favorite_news_db"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

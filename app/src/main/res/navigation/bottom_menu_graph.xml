@@ -7,22 +7,33 @@
 
     <fragment
         android:id="@+id/homePage"
-        android:name="com.vasifgumbatov.news.view.ui.home.HomeFragment"
+        android:name="com.vasifgumbatov.news.view.ui.home.HomeNewsFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favouritePage"
-        android:name="com.vasifgumbatov.news.view.ui.favourite.FavoriteFragment"
+        android:name="com.vasifgumbatov.news.view.ui.favourite.FavoriteNewsFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
     <fragment
-        android:id="@+id/settingsPage"
-        android:name="com.vasifgumbatov.news.view.ui.profile.ProfileFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/weatherFragment2"
+        android:id="@+id/weatherPage"
         android:name="com.vasifgumbatov.news.view.ui.weather.WeatherFragment"
         android:label="fragment_weather"
         tools:layout="@layout/fragment_weather" />
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.vasifgumbatov.news.view.ui.profile.ProfileFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_profile" >
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsPage"
+        android:name="com.vasifgumbatov.news.view.ui.profile.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <dialog
+        android:id="@+id/languageBottomSheetFragment"
+        android:name="com.vasifgumbatov.news.view.ui.profile.language.LanguageBottomSheetFragment"
+        android:label="fragment_language_bottom_sheet"
+        tools:layout="@layout/fragment_language_bottom_sheet" />
 </navigation>

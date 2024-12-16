@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
@@ -7,23 +8,37 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.vasifgumbatov.news.view.ui.home.HomeFragment"
+        android:name="com.vasifgumbatov.news.view.ui.home.HomeNewsFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.vasifgumbatov.news.view.ui.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.vasifgumbatov.news.view.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/main_to_aboutUsFragment2"
+            app:destination="@id/aboutUsFragment2" />
+        <action
+            android:id="@+id/main_to_community"
+            app:destination="@id/communityFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.vasifgumbatov.news.view.ui.favourite.FavoriteFragment"
+        android:name="com.vasifgumbatov.news.view.ui.favourite.FavoriteNewsFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
+
+    <fragment
+        android:id="@+id/aboutUsFragment2"
+        android:name="com.vasifgumbatov.news.view.ui.profile.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.vasifgumbatov.news.view.ui.profile.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" />
 </navigation>

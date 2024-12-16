@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-        <item
-            android:id="@+id/homePage"
-            android:icon="@drawable/home__state_active"
-            android:title="Home" />
-        <item
-            android:id="@+id/favouritePage"
-            android:icon="@drawable/favorite__state_active"
-            android:title="Favorite" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/homePage"
+        android:icon="@drawable/home__state_active"
+        android:title="Home"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/favouritePage"
+        android:icon="@drawable/favorite__state_active"
+        android:title="Favorite"
+        tools:ignore="HardcodedText" />
     <item
         android:id="@+id/weatherPage"
         android:icon="@drawable/ic_weather"
-        android:title="Weather" />
-        <item
-            android:id="@+id/profilePage"
-            android:icon="@drawable/profile__state_active"
-            android:title="Profile" />
-    </menu>
+        android:title="Weather"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/profilePage"
+        android:icon="@drawable/profile__state_active"
+        android:title="Profile"
+        tools:ignore="HardcodedText" />
+</menu>

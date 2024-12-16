@@ -8,11 +8,12 @@ plugins {
 
 android {
     namespace = "com.vasifgumbatov.news"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.vasifgumbatov.news"
         minSdk = 26
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -43,30 +44,46 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.core.ktx.v190)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.tools.core)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.gson)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+
+    implementation(libs.bundles.navigationLibs)
+
+    implementation(libs.bundles.networking)
+
+
     implementation(libs.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
     implementation(libs.androidx.room.ktx)
+
+    //
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     implementation(libs.coil)
-    implementation(libs.okHttp)
-    implementation(libs.loggingInterceptor)
     implementation(libs.glide)
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.glide.compiler)
+
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+
+    // Hilt
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
+
+    //Paging
+    implementation(libs.paging3)
+
+    implementation(libs.volley)
 }

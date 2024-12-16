@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".view.ui.profile.CommunityFragment">
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/applogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileText1"/>
+
+    <TextView
+        android:id="@+id/profileText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/new_york_small_bold"
+        android:text="@string/our"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/profileImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profileText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/new_york_small_bold"
+        android:text="@string/community"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileImage"/>
+
+    <TextView
+        android:id="@+id/gitURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="4dp"
+        android:padding="1dp"
+        android:text="https://github.com/vasifgumbatov/NewsDay"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_url"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileText2" />
+
+    <TextView
+        android:id="@+id/linkedinURL"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:maxLines="3"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:padding="1dp"
+        android:drawablePadding="4dp"
+        android:text="https://www.linkedin.com/in/vasif-gumbatov-778251277/"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_url"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gitURL" />
+
+    <TextView
+        android:id="@+id/apiURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:drawablePadding="4dp"
+        android:padding="1dp"
+        android:text="https://newsapi.org/"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_url"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linkedinURL" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

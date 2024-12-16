@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    night-->
+    <color name="textColor">#FFFFFF</color>
+    <color name="background">#000000</color>
+    <color name="imageBTN">#FFFFFF</color>
+    <color name="iconColor">#FFFFFF</color>
+</resources>

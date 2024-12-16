@@ -11,7 +11,6 @@ import com.vasifgumbatov.news.databinding.ItemWeatherBinding
 class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
     private var weatherList: List<CurrentWeather> = listOf()
-    private var conditionList: List<CurrentWeather> = listOf()
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: List<CurrentWeather>) {
@@ -23,7 +22,20 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
         RecyclerView.ViewHolder(binding.root) {
         fun bind(weather: CurrentWeather) {
             binding.tempText.text = weather.temperature.toString()
-            Glide.with(binding.weatherIcon.context).load(weather.condition).into(binding.weatherIcon)
+            binding.weatherText.text = weather.condition.text
+            binding.weatherIcon.contentDescription = weather.condition.text
+            binding.cityText.text = weather.condition.text
+            binding.lastUpdatedTV.text = weather.lastUpdated
+
+//            val iconUrl = if (weather.condition.icon.startsWith("http")) {
+//                weather.condition.icon
+//            } else {
+//                "https://api.weatherapi.com/v1/" + weather.condition.icon
+//            }
+
+            Glide.with(binding.weatherIcon.context)
+                .load(weather.condition.icon)
+                .into(binding.weatherIcon)
         }
     }
 
