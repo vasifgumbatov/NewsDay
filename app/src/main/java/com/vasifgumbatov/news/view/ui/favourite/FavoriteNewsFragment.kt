@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FavoriteNewsFragment @Inject constructor() : CoreFragment<FragmentFavouriteBinding>() {
+class FavoriteNewsFragment () : CoreFragment<FragmentFavouriteBinding>() {
     private var favoriteAdapter = FavoriteNewsAdapter(emptyList())
     private val favoriteNewsVM: FavoriteNewsVM by viewModels()
     private var allFavorites = emptyList<FavoriteEntity>()

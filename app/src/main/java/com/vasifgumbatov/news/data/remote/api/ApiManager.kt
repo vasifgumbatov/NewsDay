@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+// TODO: Bu object-i sile bilersen
 object ApiManager {
 
     private var okHttpClient = OkHttpClient.Builder()
