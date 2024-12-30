@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.ui.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment">
 
     <ImageView
         android:id="@+id/profileImage"
@@ -20,11 +20,11 @@
         android:id="@+id/profileText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/new_york_small_bold"
         android:text="@string/news"
         android:textColor="@color/textColor"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:fontFamily="@font/new_york_small_bold"
         android:text="@string/day"
         android:textColor="@color/textColor"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileImage"/>
@@ -68,14 +68,16 @@
 
     <ImageButton
         android:id="@+id/passToCommunity"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="300dp"
         android:layout_marginTop="22dp"
-        android:layout_marginEnd="50dp"
         android:background="@color/transparent"
         android:src="@drawable/icon_arrow_single"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline" />
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        tools:ignore="RtlSymmetry" />
 
     <ImageView
         android:id="@+id/aboutIV"
@@ -102,15 +104,17 @@
 
     <ImageButton
         android:id="@+id/passToAboutUs"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
-        android:layout_marginEnd="50dp"
+        android:paddingStart="300dp"
         android:background="@color/transparent"
         android:src="@drawable/icon_arrow_single"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider2"
-        tools:layout_editor_absoluteY="243dp" />
+        tools:layout_editor_absoluteY="243dp"
+        tools:ignore="RtlSymmetry" />
 
     <ImageView
         android:id="@+id/languageIV"
@@ -137,14 +141,16 @@
 
     <ImageButton
         android:id="@+id/langChangeBTN"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
-        android:layout_marginEnd="50dp"
+        android:paddingStart="300dp"
         android:background="@color/transparent"
         android:src="@drawable/icon_arrow_single"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider3" />
+        app:layout_constraintTop_toBottomOf="@id/divider3"
+        tools:ignore="RtlSymmetry" />
 
     <ImageView
         android:id="@+id/modeChangeIV"
@@ -220,6 +226,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="167dp" />
+        app:layout_constraintGuide_begin="200dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

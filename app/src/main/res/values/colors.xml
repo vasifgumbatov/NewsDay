@@ -10,12 +10,16 @@
     <color name="blueCb">#1976D2</color>
     <color name="red">#FF0000</color>
     <color name="grey">#808080</color>
+    <color name="detail_button">#979696</color>
     <color name="selected">#FF3A44</color>
     <color name="unSelected">#808080</color>
     <color name="profileBG">#242424</color>
     <color name="backBG">#EEF1F4</color>
     <color name="transparent">#00000000</color>
     <color name="postBg">#EFE7E7</color>
+
+    <color name="button1">#FF3A44</color>
+    <color name="button2">#FF8086</color>
 
     <color name="minus_red">#F44336</color>
     <color name="plus_cyan">#199696</color>

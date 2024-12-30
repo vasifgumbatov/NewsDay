@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.profile.language.LanguageBottomSheetFragment">
+    android:background="@color/background"
+    tools:context=".ui.language.LanguageBottomSheetFragment">
 
     <TextView
         android:id="@+id/defaultTV"
@@ -14,8 +15,8 @@
         android:fontFamily="@font/new_york_small_regular"
         android:gravity="center"
         android:text="@string/english"
-        android:textSize="25sp"
         android:textColor="@color/textColor"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,8 +29,8 @@
         android:fontFamily="@font/new_york_small_regular"
         android:gravity="center"
         android:text="@string/russian"
-        android:textSize="25sp"
         android:textColor="@color/textColor"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dividerEng" />
@@ -42,8 +43,8 @@
         android:fontFamily="@font/new_york_small_regular"
         android:gravity="center"
         android:text="@string/spanish"
-        android:textSize="25sp"
         android:textColor="@color/textColor"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/russianTV" />
@@ -53,19 +54,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:paddingBottom="8dp"
         android:fontFamily="@font/new_york_small_regular"
         android:gravity="center"
+        android:paddingBottom="8dp"
         android:text="@string/german"
-        android:textSize="25sp"
         android:textColor="@color/textColor"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spanishTV" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/dividerEng"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +75,7 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider1"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +84,7 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider2"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +95,6 @@
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="frenchTV"/>
+        app:barrierDirection="bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

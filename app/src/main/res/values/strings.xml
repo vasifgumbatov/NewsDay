@@ -46,4 +46,12 @@
     <string name="community">Community</string>
     <string name="about">About</string>
     <string name="us">Us</string>
+    <string name="bitcoin_home">Bitcoin</string>
+    <string name="techcrunch_home">TechCrunch</string>
+    <string name="apple_home">Apple</string>
+    <string name="btc_news_news">BTC News</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tech_crunch_news">Tech Crunch News</string>
+
 </resources>

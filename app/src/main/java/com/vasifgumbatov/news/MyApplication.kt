@@ -8,7 +8,7 @@ import java.util.logging.Logger
 import javax.inject.Inject
 
 @HiltAndroidApp
-class MyApplication @Inject constructor() : Application() {
+class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

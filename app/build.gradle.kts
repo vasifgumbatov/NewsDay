@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.tools.core)
 
+    // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -84,6 +85,9 @@ dependencies {
 
     //Paging
     implementation(libs.paging3)
-
     implementation(libs.volley)
+
+    // Blur
+    implementation (libs.blurview)
+
 }

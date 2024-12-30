@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.ui.profile.AboutUsFragment">
+    tools:context=".ui.profile.AboutUsFragment">
 
     <ImageView
         android:id="@+id/profileImage"
@@ -20,11 +20,11 @@
         android:id="@+id/profileText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/new_york_small_bold"
         android:text="@string/about"
         android:textColor="@color/textColor"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:fontFamily="@font/new_york_small_bold"
         android:text="@string/us"
         android:textColor="@color/textColor"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileImage"/>
@@ -47,7 +47,7 @@
         android:id="@+id/aboutUsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/new_york_small_regular"
         android:padding="22dp"
         android:text="@string/about_us_text"

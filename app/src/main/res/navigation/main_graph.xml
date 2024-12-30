@@ -8,18 +8,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.vasifgumbatov.news.view.ui.home.HomeNewsFragment"
+        android:name="com.vasifgumbatov.news.ui.home.HomeNewsFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_btcNewsFragment"
+            app:destination="@id/btcNewsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.vasifgumbatov.news.view.ui.main.MainFragment"
+        android:name="com.vasifgumbatov.news.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/main_to_aboutUsFragment2"
-            app:destination="@id/aboutUsFragment2" />
+            android:id="@+id/main_to_aboutUs"
+            app:destination="@id/aboutUsFragment" />
         <action
             android:id="@+id/main_to_community"
             app:destination="@id/communityFragment" />
@@ -27,18 +31,46 @@
 
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.vasifgumbatov.news.view.ui.favourite.FavoriteNewsFragment"
+        android:name="com.vasifgumbatov.news.ui.favourite.FavoriteNewsFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
 
     <fragment
-        android:id="@+id/aboutUsFragment2"
-        android:name="com.vasifgumbatov.news.view.ui.profile.AboutUsFragment"
+        android:id="@+id/aboutUsFragment"
+        android:name="com.vasifgumbatov.news.ui.profile.AboutUsFragment"
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/communityFragment"
-        android:name="com.vasifgumbatov.news.view.ui.profile.CommunityFragment"
+        android:name="com.vasifgumbatov.news.ui.profile.CommunityFragment"
         android:label="fragment_community"
         tools:layout="@layout/fragment_community" />
+    <fragment
+        android:id="@+id/btcNewsFragment"
+        android:name="com.vasifgumbatov.news.ui.home.btcnews.BtcNewsFragment"
+        android:label="fragment_btc_news"
+        tools:layout="@layout/fragment_btc_news" >
+        <action
+            android:id="@+id/action_btcNewsFragment_to_btcDetail2"
+            app:destination="@id/btcDetail2" />
+    </fragment>
+    <fragment
+        android:id="@+id/techCrunchNewsFragment"
+        android:name="com.vasifgumbatov.news.ui.home.techcrunchnews.TechCrunchNewsFragment"
+        android:label="fragment_tech_crunch_news"
+        tools:layout="@layout/fragment_tech_crunch_news" >
+        <action
+            android:id="@+id/action_techCrunchNewsFragment_to_techCrunchDetail"
+            app:destination="@id/techCrunchDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/btcDetail2"
+        android:name="com.vasifgumbatov.news.ui.detail.BtcDetail"
+        android:label="fragment_btc_detail"
+        tools:layout="@layout/fragment_btc_detail" />
+    <fragment
+        android:id="@+id/techCrunchDetail"
+        android:name="com.vasifgumbatov.news.ui.detail.TechCrunchDetail"
+        android:label="fragment_tech_crunch_detail"
+        tools:layout="@layout/fragment_tech_crunch_detail" />
 </navigation>

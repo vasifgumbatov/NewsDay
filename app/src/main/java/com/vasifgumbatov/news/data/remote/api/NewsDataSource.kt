@@ -10,6 +10,20 @@ interface NewsDataSource {
     @GET("top-headlines")
     suspend fun getTopHeadlines(
         @Query("apiKey") apiKey: String,
-        @Query("sources") sources: String
+        @Query("sources") sources: String,
+    ): Response<NewsResponse>
+
+    @GET("everything")
+    suspend fun getEverythingBTC(
+        @Query("apiKey") apiKey: String,
+        @Query("q") query: String,
+        @Query("pageSize") pageSize: Int,
+        @Query("page") page: Int
+    ): Response<NewsResponse>
+
+    @GET("top-headlines")
+    suspend fun getEverythingTech(
+        @Query("apiKey") apiKey: String,
+        @Query("sources") sources: String,
     ): Response<NewsResponse>
 }

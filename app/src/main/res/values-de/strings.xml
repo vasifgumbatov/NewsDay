@@ -35,15 +35,20 @@
     <string name="intro_text_3">Vergessen Sie auch nicht Ihr tägliches Wetter</string>
     <string name="search_news_by_name">Nachrichten nach Name suchen</string>
     <string name="news_details">Nachrichtendetails</string>
-    <string name="news">Nachrichten</string>
-    <string name="day">Tag</string>
-    <string name="russian">Russisch(ru)</string>
-    <string name="spanish">Spanisch(es)</string>
-    <string name="german">Deutsch(de)</string>
-    <string name="english">Englisch(en)</string>
+    <string name="news">News</string>
+    <string name="day">Day</string>
+    <string name="russian">Russian(ru)</string>
+    <string name="spanish">Spanish(es)</string>
+    <string name="german">German(de)</string>
+    <string name="english">English(en)</string>
     <string name="lasted_news">Neueste Nachrichten</string>
     <string name="our">Unser</string>
     <string name="community">Gemeinschaft</string>
     <string name="about">Über</string>
     <string name="us">Uns</string>
+    <string name="bitcoin_home">Bitcoin</string>
+    <string name="techcrunch_home">TechCrunch</string>
+    <string name="apple_home">Apple</string>
+    <string name="btc_news_news">BTC News</string>
+    <string name="tech_crunch_news">Tech Crunch News</string>
 </resources>
