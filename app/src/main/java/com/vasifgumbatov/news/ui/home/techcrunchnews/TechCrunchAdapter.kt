@@ -1,9 +1,7 @@
 package com.vasifgumbatov.news.ui.home.techcrunchnews
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,15 +9,21 @@ import com.bumptech.glide.Glide
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.ItemChildNewsBinding
-import com.vasifgumbatov.news.databinding.ItemNewsHomeBinding
 
 class TechCrunchAdapter : ListAdapter<Article, TechCrunchAdapter.TechViewHolder>(diffUtil) {
 
-    private var onItemClick: ((id: Int) -> Unit)? = null
+    private var onFavoriteClick: ((id: Int) -> Unit)? = null
+    private var onItemClick: ((article: Article) -> Unit)? = null
 
-    fun setOnItemClick(listener: (id: Int) -> Unit) {
+    fun setOnFavoriteClick(listener: (id: Int) -> Unit) {
+        this.onFavoriteClick = listener
+    }
+
+
+    fun setOnItemClick(listener: (article: Article) -> Unit) {
         this.onItemClick = listener
     }
+
 
     inner class TechViewHolder(private val binding: ItemChildNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -40,21 +44,11 @@ class TechCrunchAdapter : ListAdapter<Article, TechCrunchAdapter.TechViewHolder>
             }
 
             binding.favoriteIC.setOnClickListener {
-                onItemClick?.invoke(position)
+                onFavoriteClick?.invoke(position)
             }
 
             binding.root.setOnClickListener {
-                val bundle = Bundle().apply {
-                    putString("author", article.author)
-                    putString("title", article.title)
-                    putString("imageUrl", article.urlToImage)
-                    putString("description", article.description)
-                    putString("url", article.url)
-                    putString("content", article.content)
-                    putString("publishedAt", article.publishedAt)
-                }
-
-                Navigation.findNavController(it).navigate(R.id.action_techCrunchNewsFragment_to_techCrunchDetail, bundle)
+                onItemClick?.invoke(article)
             }
         }
     }

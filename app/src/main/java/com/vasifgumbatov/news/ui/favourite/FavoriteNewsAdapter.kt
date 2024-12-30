@@ -16,10 +16,18 @@ class FavoriteNewsAdapter(private var favoriteList: MutableList<FavoriteEntity>)
     RecyclerView.Adapter<FavoriteNewsAdapter.FavoriteNewsViewHolder>() {
 
     private var onDeleteClick: ((favorite: FavoriteEntity) -> Unit)? = null
+    private var onItemClick: ((favorite: FavoriteEntity) -> Unit)? = null
 
     fun setOnDeleteClick(listener: (favorite: FavoriteEntity) -> Unit) {
         this.onDeleteClick = listener
     }
+
+
+    fun setOnItemClick(listener: (favorite: FavoriteEntity) -> Unit) {
+        this.onItemClick = listener
+    }
+
+
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newList: List<FavoriteEntity>) {
@@ -52,17 +60,7 @@ class FavoriteNewsAdapter(private var favoriteList: MutableList<FavoriteEntity>)
             }
 
             binding.root.setOnClickListener {
-                val bundle = Bundle().apply {
-                    putString("author", favorite.author)
-                    putString("title", favorite.title)
-                    putString("imageUrl", favorite.urlToImage)
-                    putString("description", favorite.description)
-                    putString("url", favorite.url)
-                    putString("content", favorite.content)
-                    putString("publishedAt", favorite.publishedAt)
-                }
-
-                Navigation.findNavController(it).navigate(R.id.action_favourite_to_favoriteDetail, bundle)
+                onItemClick?.invoke(favorite)
             }
         }
     }

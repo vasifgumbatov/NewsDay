@@ -19,8 +19,13 @@ class HomeNewsVM @Inject constructor(
     private val repository: FavoriteNewsRepository
 ) : ViewModel() {
 
+    init {
+        getFavoriteNews()
+    }
+
     val newsLiveData = MutableLiveData<List<Article>>()
     val errorLiveData = MutableLiveData<String>()
+    private var favoriteNew = listOf<FavoriteEntity>()
 
     fun fetchNews(sources: String, apiKey: String) {
         viewModelScope.launch {
@@ -28,11 +33,19 @@ class HomeNewsVM @Inject constructor(
                 sources, apiKey,
             )
             if (newsResponse != null) {
+                // TODO:  check favoriteNew and newsResponse.articles
                 newsLiveData.postValue(newsResponse.articles)
             } else {
                 errorLiveData.postValue("Failed to load news")
             }
         }
+    }
+
+    private fun getFavoriteNews(){
+        viewModelScope.launch {
+            favoriteNew = repository.getLikedNews()
+        }
+
     }
 
     fun addMainNewsToDB(article: Article) {

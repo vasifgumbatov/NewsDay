@@ -1,107 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
+    android:fillViewport="true"
     android:paddingBottom="10dp"
     tools:context=".ui.home.HomeNewsFragment">
 
-    <TextView
-        android:id="@+id/lastedNews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/new_york_small_bold"
-        android:text="@string/lasted_news"
-        android:textColor="@color/textColor"
-        android:textSize="27sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btcBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="70dp"
-        app:layout_constraintTop_toBottomOf="@id/homeRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/button1"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="5dp"
-        android:text="@string/bitcoin_home"
-        android:textAlignment="center"
-        android:textColor="@color/textColorHome" />
-
-    <Button
-        android:id="@+id/techCrunchBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@id/btcBtn"
-        app:layout_constraintTop_toBottomOf="@id/homeRecyclerView"
-        android:backgroundTint="@color/button1"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="5dp"
-        android:text="@string/techcrunch_home"
-        android:textAlignment="center"
-        android:textColor="@color/textColorHome" />
-
-    <Button
-        android:id="@+id/appleBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@id/techCrunchBtn"
-        app:layout_constraintTop_toBottomOf="@id/homeRecyclerView"
-        android:backgroundTint="@color/button1"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="5dp"
-        android:text="@string/apple_home"
-        android:textAlignment="center"
-        android:textColor="@color/textColorHome" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lastedNews"
-        app:layout_constraintVertical_bias="0.909" />
+        android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homeRecyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:scrollbars="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lastedNews"
-        tools:itemCount="1"
-        tools:listitem="@layout/item_news_home" />
+        <TextView
+            android:id="@+id/lastedNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/new_york_small_bold"
+            android:text="@string/lasted_news"
+            android:textColor="@color/textColor"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- News Under Buttons -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerOtherNews"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btcBtn"
-        tools:itemCount="1"
-        tools:listitem="@layout/item_news_home" />
+        <Button
+            android:id="@+id/btcBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="70dp"
+            app:layout_constraintTop_toBottomOf="@id/homeRecyclerView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/button1"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="5dp"
+            android:text="@string/bitcoin_home"
+            android:textAlignment="center"
+            android:textColor="@color/textColorHome" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/techCrunchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/btcBtn"
+            app:layout_constraintTop_toBottomOf="@id/homeRecyclerView"
+            android:backgroundTint="@color/button1"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="5dp"
+            android:text="@string/techcrunch_home"
+            android:textAlignment="center"
+            android:textColor="@color/textColorHome" />
+
+        <Button
+            android:id="@+id/appleBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/techCrunchBtn"
+            app:layout_constraintTop_toBottomOf="@id/homeRecyclerView"
+            android:backgroundTint="@color/button1"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="5dp"
+            android:text="@string/apple_home"
+            android:textAlignment="center"
+            android:textColor="@color/textColorHome" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastedNews"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            android:scrollbarSize="0dp"
+            tools:listitem="@layout/item_news_home" />
+
+        <!-- News Under Buttons -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerOtherNews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btcBtn"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_news_home" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

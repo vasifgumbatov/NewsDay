@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.tabs.TabLayoutMediator
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.FragmentHomeBinding
+import com.vasifgumbatov.news.extensions.navigateFromParent
 import com.vasifgumbatov.news.ui.core.CoreFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +34,11 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.btcBtn?.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_btcNewsFragment)
+            navigateFromParent(R.id.action_main_to_btcNews)
+        }
+
+        binding?.techCrunchBtn?.setOnClickListener {
+            navigateFromParent(R.id.action_main_to_techCrunchNews)
         }
 
         setUpRecyclerViews()
@@ -50,29 +52,28 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
 
         binding?.homeRecyclerView?.apply {
             adapter = homeNewsAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
         }
 
         binding?.recyclerOtherNews?.apply {
             adapter = otherNewsAdapter
-            layoutManager = LinearLayoutManager(requireContext())
+
         }
 
-        binding?.recyclerOtherNews?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                if (dy > 0) {
-                    binding?.btcBtn?.visibility = View.GONE
-                    binding?.techCrunchBtn?.visibility = View.GONE
-                    binding?.appleBtn?.visibility = View.GONE
-                } else {
-                    binding?.btcBtn?.visibility = View.VISIBLE
-                    binding?.techCrunchBtn?.visibility = View.VISIBLE
-                    binding?.appleBtn?.visibility = View.VISIBLE
-                }
+        homeNewsAdapter.setOnItemClick { article ->
+            val bundle = Bundle().apply {
+                putString("author", article.author)
+                putString("title", article.title)
+                putString("imageUrl", article.urlToImage)
+                putString("description", article.description)
+                putString("url", article.url)
+                putString("content", article.content)
+                putString("publishedAt", article.publishedAt)
             }
-        })
+
+            navigateFromParent(R.id.action_main_to_homeDetail, bundle)
+        }
+
     }
 
     private fun observeNews() {
@@ -97,13 +98,13 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
         latestNews: List<Article>,
         otherNews: List<Article>,
     ) {
-        homeNewsAdapter.setOnItemClick { position ->
+        homeNewsAdapter.setOnFavoriteClick { position ->
             latestNews[position].isLiked = !latestNews[position].isLiked
             homeNewsAdapter.notifyItemChanged(position)
             homeNewsVM.addMainNewsToDB(latestNews[position])
         }
 
-        otherNewsAdapter.setOnItemClick { position ->
+        otherNewsAdapter.setOnFavoriteClick { position ->
             otherNews[position].isLiked = !otherNews[position].isLiked
             otherNewsAdapter.notifyItemChanged(position)
             homeNewsVM.addMainNewsToDB(otherNews[position])

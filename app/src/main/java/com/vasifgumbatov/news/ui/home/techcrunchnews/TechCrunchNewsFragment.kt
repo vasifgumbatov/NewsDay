@@ -2,20 +2,18 @@ package com.vasifgumbatov.news.ui.home.techcrunchnews
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.FragmentTechCrunchNewsBinding
 import com.vasifgumbatov.news.ui.core.CoreFragment
-import com.vasifgumbatov.news.ui.home.btcnews.BtcNewsAdapter
-import com.vasifgumbatov.news.ui.home.btcnews.BtcNewsVM
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -58,6 +56,21 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
     private fun setUpRecyclerViews() {
         techAdapter = TechCrunchAdapter()
 
+        techAdapter.setOnItemClick { article ->
+            val bundle = Bundle().apply {
+                putString("author", article.author)
+                putString("title", article.title)
+                putString("imageUrl", article.urlToImage)
+                putString("description", article.description)
+                putString("url", article.url)
+                putString("content", article.content)
+                putString("publishedAt", article.publishedAt)
+            }
+
+            findNavController().navigate(R.id.action_techCrunchNews_to_techCrunchDetail, bundle)
+
+        }
+
         binding?.techRecyclerView?.apply {
             adapter = techAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -67,7 +80,7 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
     private fun setupLikeClickListeners(
         latestNews: List<Article>,
     ) {
-        techAdapter.setOnItemClick { position ->
+        techAdapter.setOnFavoriteClick { position ->
             latestNews[position].isLiked = !latestNews[position].isLiked
             techAdapter.notifyItemChanged(position)
             techNewsVM.addTechNewsToDB(latestNews[position])

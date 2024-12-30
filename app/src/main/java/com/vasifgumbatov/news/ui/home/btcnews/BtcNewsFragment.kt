@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.FragmentBtcNewsBinding
 import com.vasifgumbatov.news.ui.core.CoreFragment
@@ -40,6 +42,21 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
     private fun setUpRecyclerViews() {
         btcNewsAdapter = BtcNewsAdapter()
 
+        btcNewsAdapter.setOnItemClick { article->
+            val bundle = Bundle().apply {
+                putString("author", article.author)
+                putString("title", article.title)
+                putString("imageUrl", article.urlToImage)
+                putString("description", article.description)
+                putString("url", article.url)
+                putString("content", article.content)
+                putString("publishedAt", article.publishedAt)
+            }
+
+            findNavController().navigate(R.id.action_btcNews_to_btcDetail, bundle)
+
+        }
+
         binding?.btcRecyclerView?.apply {
             adapter = btcNewsAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -65,7 +82,7 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
     private fun setupLikeClickListeners(
         latestNews: List<Article>,
     ) {
-        btcNewsAdapter.setOnItemClick { position ->
+        btcNewsAdapter.setOnFavoriteClick { position ->
             latestNews[position].isLiked = !latestNews[position].isLiked
             btcNewsAdapter.notifyItemChanged(position)
             btcNewsVM.addBtcNewsToDB(latestNews[position])

@@ -1,4 +1,4 @@
-package com.vasifgumbatov.news.ui.main
+package com.vasifgumbatov.news.ui
 
 import android.content.Context
 import android.content.SharedPreferences

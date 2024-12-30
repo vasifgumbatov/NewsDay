@@ -11,13 +11,17 @@ import com.bumptech.glide.Glide
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.ItemChildNewsBinding
-import com.vasifgumbatov.news.databinding.ItemNewsHomeBinding
 
 class BtcNewsAdapter : ListAdapter<Article, BtcNewsAdapter.BtcViewHolder>(diffUtil) {
 
-    private var onItemClick: ((id: Int) -> Unit)? = null
+    private var onFavoriteClick: ((id: Int) -> Unit)? = null
+    private var onItemClick: ((article: Article) -> Unit)? = null
 
-    fun setOnItemClick(listener: (id: Int) -> Unit) {
+    fun setOnFavoriteClick(listener: (id: Int) -> Unit) {
+        this.onFavoriteClick = listener
+    }
+
+    fun setOnItemClick(listener: (article: Article) -> Unit) {
         this.onItemClick = listener
     }
 
@@ -40,21 +44,11 @@ class BtcNewsAdapter : ListAdapter<Article, BtcNewsAdapter.BtcViewHolder>(diffUt
             }
 
             binding.favoriteIC.setOnClickListener {
-                onItemClick?.invoke(position)
+                onFavoriteClick?.invoke(position)
             }
 
             binding.root.setOnClickListener {
-                val bundle = Bundle().apply {
-                    putString("author", article.author)
-                    putString("title", article.title)
-                    putString("imageUrl", article.urlToImage)
-                    putString("description", article.description)
-                    putString("url", article.url)
-                    putString("content", article.content)
-                    putString("publishedAt", article.publishedAt)
-                }
-
-                Navigation.findNavController(it).navigate(R.id.action_btcNewsFragment_to_btcDetail2, bundle)
+                onItemClick?.invoke(article)
             }
         }
     }
