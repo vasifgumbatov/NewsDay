@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="22dp"
         android:fontFamily="@font/new_york_small_regular"
         android:text="@string/about_us"
         android:textColor="@color/textColor"
@@ -177,7 +177,7 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/modeChangeBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="32dp"

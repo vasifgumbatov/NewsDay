@@ -68,10 +68,8 @@
             android:backgroundTint="@color/button1"
             android:paddingHorizontal="12dp"
             android:paddingVertical="5dp"
-            android:text="@string/apple_home"
             android:textAlignment="center"
             android:textColor="@color/textColorHome" />
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homeRecyclerView"
@@ -104,7 +102,5 @@
             tools:listitem="@layout/item_news_home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </androidx.core.widget.NestedScrollView>

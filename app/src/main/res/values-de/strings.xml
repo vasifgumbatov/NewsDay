@@ -48,7 +48,6 @@
     <string name="us">Uns</string>
     <string name="bitcoin_home">Bitcoin</string>
     <string name="techcrunch_home">TechCrunch</string>
-    <string name="apple_home">Apple</string>
-    <string name="btc_news_news">BTC News</string>
-    <string name="tech_crunch_news">Tech Crunch News</string>
+    <string name="btc_news_news">BTC Nachrichten</string>
+    <string name="tech_crunch_news">TechCrunch Nachrichten</string>
 </resources>

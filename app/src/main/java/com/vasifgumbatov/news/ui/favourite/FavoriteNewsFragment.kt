@@ -27,7 +27,7 @@ class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentFavouriteBinding.inflate(inflater, container, false)
         return binding?.root
@@ -89,5 +89,4 @@ class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
             }
         }
     }
-
 }
