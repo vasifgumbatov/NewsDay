@@ -46,8 +46,9 @@
     <string name="community">Сообщество</string>
     <string name="about">О</string>
     <string name="us">Нас</string>
-    <string name="bitcoin_home">Биткоин</string>
+    <string name="bitcoin_home">Bitcoin</string>
     <string name="techcrunch_home">TechCrunch</string>
-    <string name="btc_news_news">Новости BTC</string>
-    <string name="tech_crunch_news">Новости TechCrunch</string>
+    <string name="apple_home">Apple</string>
+    <string name="btc_news_news">BTC News</string>
+    <string name="tech_crunch_news">Tech Crunch News</string>
 </resources>

@@ -33,9 +33,7 @@ class HomeNewsVM @Inject constructor(
                 sources, apiKey,
             )
             if (newsResponse != null) {
-                newsResponse.articles.forEach { article ->
-                    article.isLiked = favoriteNew.any { it.title == article.title }
-                }
+                // TODO:  check favoriteNew and newsResponse.articles
                 newsLiveData.postValue(newsResponse.articles)
             } else {
                 errorLiveData.postValue("Failed to load news")
@@ -47,6 +45,7 @@ class HomeNewsVM @Inject constructor(
         viewModelScope.launch {
             favoriteNew = repository.getLikedNews()
         }
+
     }
 
     fun addMainNewsToDB(article: Article) {

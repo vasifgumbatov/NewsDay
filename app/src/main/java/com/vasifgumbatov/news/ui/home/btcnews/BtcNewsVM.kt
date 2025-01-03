@@ -21,14 +21,9 @@ class BtcNewsVM @Inject constructor(
     private val pagingRepository: NewsPagingRepository
 ) : ViewModel() {
 
-    init {
-        getFavoriteNews()
-    }
-
     val pagedNews = pagingRepository.getPagedNews().cachedIn(viewModelScope)
     val newsLiveData = MutableLiveData<List<Article>>()
     val errorLiveData = MutableLiveData<String>()
-    private var favoriteNew = listOf<FavoriteEntity>()
 
     fun fetchNewsBtc(q: String, apiKey: String) {
         viewModelScope.launch {
@@ -36,9 +31,6 @@ class BtcNewsVM @Inject constructor(
                 q, apiKey, page = 1, pageSize = 10
             )
             if (newsResponse != null) {
-                newsResponse.articles.forEach { article ->
-                    article.isLiked = favoriteNew.any { it.title == article.title }
-                }
                 newsLiveData.postValue(newsResponse.articles)
             } else {
                 errorLiveData.postValue("Failed to load news")
@@ -46,11 +38,6 @@ class BtcNewsVM @Inject constructor(
         }
     }
 
-    private fun getFavoriteNews(){
-        viewModelScope.launch {
-            favoriteNew = repository.getLikedNews()
-        }
-    }
 
     fun addBtcNewsToDB(article: Article) {
         viewModelScope.launch {

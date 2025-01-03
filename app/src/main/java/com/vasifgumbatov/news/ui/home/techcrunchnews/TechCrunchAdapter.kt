@@ -19,9 +19,11 @@ class TechCrunchAdapter : ListAdapter<Article, TechCrunchAdapter.TechViewHolder>
         this.onFavoriteClick = listener
     }
 
+
     fun setOnItemClick(listener: (article: Article) -> Unit) {
         this.onItemClick = listener
     }
+
 
     inner class TechViewHolder(private val binding: ItemChildNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -52,8 +54,7 @@ class TechCrunchAdapter : ListAdapter<Article, TechCrunchAdapter.TechViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TechViewHolder {
-        val binding =
-            ItemChildNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemChildNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TechViewHolder(binding)
     }
 

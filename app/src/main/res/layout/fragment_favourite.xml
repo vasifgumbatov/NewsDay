@@ -5,22 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ui.favourite.FavoriteNewsFragment">
+    tools:context=".ui.ui.favourite.FavoriteNewsFragment">
 
-    <EditText
-        android:id="@+id/searchNews"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/shape_rounded_back_btn_child"
-        android:hint="@string/search_news_by_name"
-        android:padding="13dp"
-        android:textColorHint="@color/grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/searchNews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/background"
+            android:hint="@string/search_news_by_name"
+            android:padding="13dp"
+            android:textColorHint="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/textField"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:background="@color/background"-->
+<!--        android:hint="@string/search_news_by_name"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:boxCornerRadiusTopStart="15dp"-->
+<!--        app:boxCornerRadiusTopEnd="15dp"-->
+<!--        app:boxCornerRadiusBottomStart="15dp"-->
+<!--        app:boxCornerRadiusBottomEnd="15dp">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoriteRV"

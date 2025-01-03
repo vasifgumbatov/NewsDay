@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -33,9 +32,7 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.backToHome?.setOnClickListener {
-            findNavController().popBackStack()
-        }
+
 
         setUpRecyclerViews()
         observeNews()
@@ -89,8 +86,6 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
             latestNews[position].isLiked = !latestNews[position].isLiked
             btcNewsAdapter.notifyItemChanged(position)
             btcNewsVM.addBtcNewsToDB(latestNews[position])
-
-            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
         }
     }
 }

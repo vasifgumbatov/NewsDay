@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -19,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
-    private val techNewsVM: TechCrunchVM by viewModels()
+    private val techNewsVM: TechCrunchViewModel by viewModels()
     private var techAdapter = TechCrunchAdapter()
 
     override fun onCreateView(
@@ -32,10 +31,6 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding?.backToHome?.setOnClickListener {
-            findNavController().popBackStack()
-        }
 
         setUpRecyclerViews()
         observeTechVM()
@@ -89,8 +84,6 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
             latestNews[position].isLiked = !latestNews[position].isLiked
             techAdapter.notifyItemChanged(position)
             techNewsVM.addTechNewsToDB(latestNews[position])
-
-            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
         }
     }
 }

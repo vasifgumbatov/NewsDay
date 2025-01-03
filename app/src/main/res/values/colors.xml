@@ -11,7 +11,6 @@
     <color name="red">#FF0000</color>
     <color name="grey">#808080</color>
     <color name="detail_button">#979696</color>
-    <color name="detail_button_child">#DEDDDD</color>
     <color name="selected">#FF3A44</color>
     <color name="unSelected">#808080</color>
     <color name="profileBG">#242424</color>
@@ -33,11 +32,6 @@
     <color name="background">#FFFFFF</color>
     <color name="imageBTN">#000000</color>
     <color name="iconColor">#000000</color>
-    <color name="iconColor_child">#000000</color>
-    <color name="bottom_nav_color">#FFFFFF</color>
-    <color name="bottom_nav_text_color">#000000</color>
 
-    <color name="bottom_selected">#FFFFFF</color>
-    <color name="bottom_default">#FFFFFF</color>
 
 </resources>
