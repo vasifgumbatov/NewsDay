@@ -14,13 +14,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TechCrunchViewModel @Inject constructor(
+class TechCrunchVM @Inject constructor(
     private val newsApiService: NewsDataSource,
     private val repository: FavoriteNewsRepository
 ) : ViewModel() {
 
     val newsLiveData = MutableLiveData<List<Article>>()
     val errorLiveData = MutableLiveData<String>()
+    private var favoriteNew = listOf<FavoriteEntity>()
 
     fun fetchTechNews(sources: String, apiKey: String) {
         viewModelScope.launch {
@@ -28,10 +29,19 @@ class TechCrunchViewModel @Inject constructor(
                 sources, apiKey
             )
             if (newsResponse != null) {
+                newsResponse.articles.forEach { article ->
+                    article.isLiked = favoriteNew.any { it.title == article.title }
+                }
                 newsLiveData.postValue(newsResponse.articles)
             } else{
                 errorLiveData.postValue("Failed to load news")
             }
+        }
+    }
+
+    private fun getFavoriteNews() {
+        viewModelScope.launch {
+            favoriteNew = repository.getLikedNews()
         }
     }
 

@@ -85,6 +85,7 @@ dependencies {
 
     //Paging
     implementation(libs.paging3)
+    implementation (libs.androidx.paging.runtime.v311)
     implementation(libs.volley)
 
     // Blur

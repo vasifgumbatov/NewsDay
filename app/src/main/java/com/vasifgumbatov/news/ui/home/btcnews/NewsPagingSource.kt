@@ -7,34 +7,31 @@ import com.vasifgumbatov.news.data.remote.response.Article
 import javax.inject.Inject
 
 class NewsPagingSource @Inject constructor(
-    private val newsDataSource: NewsDataSource
-): PagingSource<Int, Article>() {
-    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
-        return 0
-    }
+    private val newsDataSource: NewsDataSource,
+    private val query: String,
+    private val apiKey: String,
+) : PagingSource<Int, Article>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
-        val currentPage = params.key ?: 1 // Start from the first page
+        val page = params.key ?: 1 // Default to the first page
         return try {
-            val response = newsDataSource.getEverythingBTC(
-                apiKey = "331cc6318d5f4e4bbdddfe9f3d4d6a93",
-                query = "bitcoin",
-                page = currentPage,
-                pageSize = 10
-            )
+            val response = newsDataSource.getEverythingBTC(query, apiKey, page, params.loadSize)
+            val articles = response.body()?.articles ?: emptyList()
 
-            if (response.isSuccessful) {
-                val articles = response.body()?.articles ?: emptyList()
-                LoadResult.Page(
-                    data = articles,
-                    prevKey = if (currentPage == 1) null else currentPage - 1,
-                    nextKey = if (articles.isEmpty()) null else currentPage + 1
-                )
-            } else {
-                LoadResult.Error(Exception("Failed to load news"))
-            }
+            LoadResult.Page(
+                data = articles,
+                prevKey = if (page == 1) null else page - 1,
+                nextKey = if (articles.isEmpty()) null else page + 1
+            )
         } catch (e: Exception) {
             LoadResult.Error(e)
+        }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val closestPage = state.closestPageToPosition(anchorPosition)
+            closestPage?.prevKey?.plus(1) ?: closestPage?.nextKey?.minus(1)
         }
     }
 }

@@ -17,6 +17,8 @@
     <color name="backBG">#EEF1F4</color>
     <color name="transparent">#00000000</color>
     <color name="postBg">#EFE7E7</color>
+    <color name="detail_button_child">#DEDDDD</color>
+    <color name="iconColor_child">#000000</color>
 
     <color name="button1">#FF3A44</color>
     <color name="button2">#FF8086</color>
@@ -32,6 +34,12 @@
     <color name="background">#FFFFFF</color>
     <color name="imageBTN">#000000</color>
     <color name="iconColor">#000000</color>
+
+    <color name="bottom_nav_color">#FFFFFF</color>
+    <color name="bottom_nav_text_color">#000000</color>
+
+    <color name="bottom_selected">#FFFFFF</color>
+    <color name="bottom_default">#FFFFFF</color>
 
 
 </resources>

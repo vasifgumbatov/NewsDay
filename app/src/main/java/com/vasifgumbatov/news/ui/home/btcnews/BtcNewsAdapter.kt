@@ -1,9 +1,8 @@
 package com.vasifgumbatov.news.ui.home.btcnews
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +59,9 @@ class BtcNewsAdapter : ListAdapter<Article, BtcNewsAdapter.BtcViewHolder>(diffUt
 
     override fun onBindViewHolder(holder: BtcViewHolder, position: Int) {
         holder.bind(getItem(position), position)
+    }
+
+    fun submitData(pagingData: PagingData<Article>) {
     }
 
     companion object {

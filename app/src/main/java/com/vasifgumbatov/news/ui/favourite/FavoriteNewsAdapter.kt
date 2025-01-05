@@ -21,13 +21,10 @@ class FavoriteNewsAdapter(private var favoriteList: MutableList<FavoriteEntity>)
     fun setOnDeleteClick(listener: (favorite: FavoriteEntity) -> Unit) {
         this.onDeleteClick = listener
     }
-
-
+    
     fun setOnItemClick(listener: (favorite: FavoriteEntity) -> Unit) {
         this.onItemClick = listener
     }
-
-
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newList: List<FavoriteEntity>) {

@@ -1,9 +1,7 @@
 package com.vasifgumbatov.news.ui.home
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +18,6 @@ class HomeNewsAdapter : ListAdapter<Article, HomeNewsAdapter.NewsViewHolder>(dif
     fun setOnFavoriteClick(listener: (id: Int) -> Unit) {
         this.onFavoriteClick = listener
     }
-
 
     fun setOnItemClick(listener: (article: Article) -> Unit) {
         this.onItemClick = listener

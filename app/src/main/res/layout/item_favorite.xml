@@ -38,11 +38,12 @@
             android:id="@+id/newsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
             android:drawablePadding="4dp"
             android:fontFamily="@font/new_york_small_bold"
             android:maxLines="2"
+            android:paddingHorizontal="16dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:text="@string/news_title"
@@ -54,11 +55,12 @@
             android:id="@+id/newsUrl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
             android:autoLink="web"
             android:drawablePadding="4dp"
             android:maxLines="4"
+            android:paddingHorizontal="16dp"
             android:paddingTop="5dp"
             android:text="@string/url"
             android:textColor="@color/textColor"
@@ -67,13 +69,14 @@
 
         <TextView
             android:id="@+id/publishedTime"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginStart="8dp"
             android:drawablePadding="4dp"
             android:fontFamily="@font/new_york_small_regular"
+            android:paddingHorizontal="16dp"
             app:drawableStartCompat="@drawable/clock"
             app:drawableTint="@color/grey" />
 
@@ -86,6 +89,6 @@
             android:layout_marginBottom="10dp"
             android:clickable="true"
             android:src="@drawable/ic_delete" />
-
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

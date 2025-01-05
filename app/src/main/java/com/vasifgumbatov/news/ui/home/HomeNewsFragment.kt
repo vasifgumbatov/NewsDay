@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -102,12 +103,16 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
             latestNews[position].isLiked = !latestNews[position].isLiked
             homeNewsAdapter.notifyItemChanged(position)
             homeNewsVM.addMainNewsToDB(latestNews[position])
+
+            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
         }
 
         otherNewsAdapter.setOnFavoriteClick { position ->
             otherNews[position].isLiked = !otherNews[position].isLiked
             otherNewsAdapter.notifyItemChanged(position)
             homeNewsVM.addMainNewsToDB(otherNews[position])
+
+            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
         }
     }
 }

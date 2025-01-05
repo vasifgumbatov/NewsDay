@@ -5,9 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vasifgumbatov.news.R
@@ -15,6 +18,8 @@ import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.FragmentBtcNewsBinding
 import com.vasifgumbatov.news.ui.core.CoreFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
@@ -32,7 +37,9 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding?.backToHome?.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
         setUpRecyclerViews()
         observeNews()
@@ -42,7 +49,7 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
     private fun setUpRecyclerViews() {
         btcNewsAdapter = BtcNewsAdapter()
 
-        btcNewsAdapter.setOnItemClick { article->
+        btcNewsAdapter.setOnItemClick { article ->
             val bundle = Bundle().apply {
                 putString("author", article.author)
                 putString("title", article.title)
@@ -58,13 +65,25 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
         }
 
         binding?.btcRecyclerView?.apply {
+
             adapter = btcNewsAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
     }
 
+//    private fun observePagedNews() {
+//        lifecycleScope.launch {
+//            btcNewsVM.getPagedNews("331cc6318d5f4e4bbdddfe9f3d4d6a93", "bitcoin")
+//                .collectLatest { pagingData ->
+//                    btcNewsAdapter.submitData(pagingData)
+//                }
+//        }
+//    }
+
     private fun observeNews() {
         btcNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
+            binding?.loadingProgressBar?.visibility = View.GONE
+
             if (newsList.isNotEmpty()) {
                 val latestNews = newsList.take(10)
 
@@ -72,10 +91,6 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
 
                 setupLikeClickListeners(latestNews)
             }
-        })
-
-        btcNewsVM.errorLiveData.observe(viewLifecycleOwner, Observer { errorMessage ->
-            Log.e("BtcNews", "Error: $errorMessage")
         })
     }
 
@@ -86,6 +101,8 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
             latestNews[position].isLiked = !latestNews[position].isLiked
             btcNewsAdapter.notifyItemChanged(position)
             btcNewsVM.addBtcNewsToDB(latestNews[position])
+
+            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
         }
     }
 }
