@@ -42,6 +42,10 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
             navigateFromParent(R.id.action_main_to_techCrunchNews)
         }
 
+        binding?.appleBtn?.setOnClickListener {
+            navigateFromParent(R.id.action_mainFragment_to_appleNewsFragment)
+        }
+
         setUpRecyclerViews()
         observeNews()
         homeNewsVM.fetchNews("bbc-news", "331cc6318d5f4e4bbdddfe9f3d4d6a93")
@@ -72,6 +76,19 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
                 putString("publishedAt", article.publishedAt)
             }
 
+            navigateFromParent(R.id.action_main_to_homeDetail, bundle)
+        }
+
+        otherNewsAdapter.setOnItemClick { article ->
+            val bundle = Bundle().apply {
+                putString("author", article.author)
+                putString("title", article.title)
+                putString("imageUrl", article.urlToImage)
+                putString("description", article.description)
+                putString("url", article.url)
+                putString("content", article.content)
+                putString("publishedAt", article.publishedAt)
+            }
             navigateFromParent(R.id.action_main_to_homeDetail, bundle)
         }
 

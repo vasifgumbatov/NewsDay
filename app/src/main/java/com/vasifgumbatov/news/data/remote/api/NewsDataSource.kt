@@ -13,6 +13,12 @@ interface NewsDataSource {
         @Query("sources") sources: String,
     ): Response<NewsResponse>
 
+    @GET("top-headlines")
+    suspend fun getEverythingTech(
+        @Query("apiKey") apiKey: String,
+        @Query("sources") sources: String,
+    ): Response<NewsResponse>
+
     @GET("everything")
     suspend fun getEverythingBTC(
         @Query("apiKey") apiKey: String,
@@ -21,9 +27,13 @@ interface NewsDataSource {
         @Query("page") page: Int
     ): Response<NewsResponse>
 
-    @GET("top-headlines")
-    suspend fun getEverythingTech(
+    @GET("everything")
+    suspend fun getEverythingApple(
         @Query("apiKey") apiKey: String,
-        @Query("sources") sources: String,
+        @Query("q") query: String,
+        @Query("from") from: String,
+        @Query("to") to: String,
+        @Query("sortBy") sortBy: String
     ): Response<NewsResponse>
+
 }

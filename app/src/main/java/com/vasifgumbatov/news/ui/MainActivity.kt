@@ -1,10 +1,13 @@
 package com.vasifgumbatov.news.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.vasifgumbatov.news.R
@@ -26,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        showCustomPermissionDialog()
+
         // statusBar color
         setStatusBarColors(R.color.background)
 
@@ -37,6 +42,33 @@ class MainActivity : AppCompatActivity() {
             setTheme(isDarkMode)
             setDarkMode(isDarkMode)
         }
+    }
+
+    @SuppressLint("InflateParams")
+    private fun showCustomPermissionDialog(){
+        val dialogView = layoutInflater.inflate(R.layout.permission_layout, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false)
+            .create()
+
+        val yesButton = dialogView.findViewById<Button>(R.id.button_allow)
+        val noButton = dialogView.findViewById<Button>(R.id.button_deny)
+
+        yesButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        noButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        LanguageHelper.applyLocale(this)
     }
 
     override fun onResume() {

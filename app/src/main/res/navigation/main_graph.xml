@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_main_to_techCrunchNews"
             app:destination="@id/techCrunchNewsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_appleNewsFragment"
+            app:destination="@id/appleNewsFragment" />
     </fragment>
 
     <fragment
@@ -77,4 +80,18 @@
         android:name="com.vasifgumbatov.news.ui.detail.TechCrunchDetail"
         android:label="fragment_tech_crunch_detail"
         tools:layout="@layout/fragment_tech_crunch_detail" />
+    <fragment
+        android:id="@+id/appleNewsFragment"
+        android:name="com.vasifgumbatov.news.ui.home.applenews.AppleNewsFragment"
+        android:label="fragment_apple_news"
+        tools:layout="@layout/fragment_apple_news" >
+        <action
+            android:id="@+id/action_appleNews_to_appleDetail"
+            app:destination="@id/appleDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/appleDetail"
+        android:name="com.vasifgumbatov.news.ui.detail.AppleDetail"
+        android:label="fragment_apple_detail"
+        tools:layout="@layout/fragment_apple_detail" />
 </navigation>

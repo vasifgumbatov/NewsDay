@@ -17,6 +17,7 @@
         android:background="@drawable/shape_rounded_back_btn_child"
         android:hint="@string/search_news_by_name"
         android:padding="13dp"
+        android:textColor="@color/textColorSearch"
         android:textColorHint="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

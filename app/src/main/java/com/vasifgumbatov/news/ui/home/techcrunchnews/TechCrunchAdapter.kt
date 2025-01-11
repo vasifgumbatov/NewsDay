@@ -19,11 +19,9 @@ class TechCrunchAdapter : ListAdapter<Article, TechCrunchAdapter.TechViewHolder>
         this.onFavoriteClick = listener
     }
 
-
     fun setOnItemClick(listener: (article: Article) -> Unit) {
         this.onItemClick = listener
     }
-
 
     inner class TechViewHolder(private val binding: ItemChildNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {

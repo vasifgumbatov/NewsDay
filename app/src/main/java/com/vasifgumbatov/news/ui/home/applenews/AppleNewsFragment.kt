@@ -1,4 +1,4 @@
-package com.vasifgumbatov.news.ui.home.techcrunchnews
+package com.vasifgumbatov.news.ui.home.applenews
 
 import android.os.Bundle
 import android.util.Log
@@ -13,20 +13,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
-import com.vasifgumbatov.news.databinding.FragmentTechCrunchNewsBinding
+import com.vasifgumbatov.news.databinding.FragmentAppleNewsBinding
 import com.vasifgumbatov.news.ui.core.CoreFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
-    private val techNewsVM: TechCrunchVM by viewModels()
-    private var techAdapter = TechCrunchAdapter()
+class AppleNewsFragment : CoreFragment<FragmentAppleNewsBinding>() {
+    private val appleNewsVM: AppleNewsVM by viewModels()
+    private var appleAdapter = AppleNewsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentTechCrunchNewsBinding.inflate(inflater, container, false)
+        binding = FragmentAppleNewsBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -38,31 +38,37 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
         }
 
         setUpRecyclerViews()
-        observeTechVM()
-        techNewsVM.fetchTechNews("techcrunch", "331cc6318d5f4e4bbdddfe9f3d4d6a93")
+        observeNews()
+        appleNewsVM.fetchNewsApple(
+            "apple",
+            "331cc6318d5f4e4bbdddfe9f3d4d6a93",
+            from = "2025-01-09",
+            to = "2025-01-09",
+            sortBy = "popularity",
+        )
     }
 
-    private fun observeTechVM() {
-        techNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
+    private fun observeNews() {
+        appleNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
             if (newsList.isNotEmpty()) {
                 val latestNews = newsList.take(10)
 
-                techAdapter.submitList(latestNews)
+                appleAdapter.submitList(latestNews)
 
                 setupLikeClickListeners(latestNews)
             }
         })
 
-        techNewsVM.errorLiveData.observe(viewLifecycleOwner) { errorMessage ->
-            Log.e("TechCrunchNews", "Error: $errorMessage")
+        appleNewsVM.errorLiveData.observe(viewLifecycleOwner) { errorMessage ->
+            Log.e("AppleNews", "Error: $errorMessage")
         }
     }
 
     private fun setUpRecyclerViews() {
-        // Set up the RecyclerView for TechCrunch news
-        techAdapter = TechCrunchAdapter()
+        // Set up the RecyclerView for BTC news
+        appleAdapter = AppleNewsAdapter()
 
-        techAdapter.setOnItemClick { article ->
+        appleAdapter.setOnItemClick { article ->
             val bundle = Bundle().apply {
                 putString("author", article.author)
                 putString("title", article.title)
@@ -73,12 +79,12 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
                 putString("publishedAt", article.publishedAt)
             }
 
-            findNavController().navigate(R.id.action_techCrunchNews_to_techCrunchDetail, bundle)
+            findNavController().navigate(R.id.action_appleNews_to_appleDetail, bundle)
 
         }
 
-        binding?.techRecyclerView?.apply {
-            adapter = techAdapter
+        binding?.appleRecyclerView?.apply {
+            adapter = appleAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
     }
@@ -86,10 +92,10 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
     private fun setupLikeClickListeners(
         latestNews: List<Article>,
     ) {
-        techAdapter.setOnFavoriteClick { position ->
+        appleAdapter.setOnFavoriteClick { position ->
             latestNews[position].isLiked = !latestNews[position].isLiked
-            techAdapter.notifyItemChanged(position)
-            techNewsVM.addTechNewsToDB(latestNews[position])
+            appleAdapter.notifyItemChanged(position)
+            appleNewsVM.addAppleNewsToDB(latestNews[position])
 
             Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
         }

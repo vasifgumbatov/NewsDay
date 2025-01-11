@@ -1,66 +1,60 @@
-package com.vasifgumbatov.news.ui.home.btcnews
+package com.vasifgumbatov.news.ui.home.applenews
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.vasifgumbatov.news.data.local.entity.FavoriteEntity
 import com.vasifgumbatov.news.data.local.repository.FavoriteNewsRepository
 import com.vasifgumbatov.news.data.remote.api.NewsDataSource
 import com.vasifgumbatov.news.data.remote.interactor.GetNewsUseCase
 import com.vasifgumbatov.news.data.remote.response.Article
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BtcNewsVM @Inject constructor(
-    private val newsApiService: NewsDataSource,
+class AppleNewsVM @Inject constructor(
     private val repository: FavoriteNewsRepository,
+    private val getNewsUseCase: GetNewsUseCase
 ) : ViewModel() {
 
     val newsLiveData = MutableLiveData<List<Article>>()
     val errorLiveData = MutableLiveData<String>()
-    val isLoading = MutableLiveData<Boolean>()
     private var favoriteNew = listOf<FavoriteEntity>()
 
     init {
-        getFavoriteNews()
+        getFavoriteNews {
+            Log.d("FavoriteNews", "Favorite news: $favoriteNew")
+        }
     }
 
-    fun fetchNewsBtc(q: String, apiKey: String) {
+    fun fetchNewsApple(q: String, apiKey: String, from: String, to: String, sortBy: String) {
         viewModelScope.launch {
-            isLoading.postValue(true)
 
-            // Fetch BTC news using the GetNewsUseCase
-            val newsResponse = GetNewsUseCase(newsApiService).executeBTCNews(
-                q, apiKey, page = 1, pageSize = 10
+            val newsResponse = getNewsUseCase.executeAppleNews(
+                q, apiKey, from, to, sortBy
             )
-            isLoading.postValue(false)
 
             if (newsResponse != null) {
-                newsResponse.articles.forEach { article ->
-                    article.isLiked = favoriteNew.any { it.title == article.title }
+                val updatedArticles = newsResponse.articles.map { article ->
+                    article.copy(isLiked = favoriteNew.any { it.title == article.title })
                 }
-                newsLiveData.postValue(newsResponse.articles)
+                newsLiveData.postValue(updatedArticles)
             } else {
                 errorLiveData.postValue("Failed to load news")
             }
         }
     }
 
-    private fun getFavoriteNews() {
+    private fun getFavoriteNews(callback: () -> Unit) {
         viewModelScope.launch {
             favoriteNew = repository.getLikedNews()
+            callback()
         }
     }
 
-    fun addBtcNewsToDB(article: Article) {
+    fun addAppleNewsToDB(article: Article) {
         viewModelScope.launch {
             val favoriteEntity = FavoriteEntity(
                 id = 0,

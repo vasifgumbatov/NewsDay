@@ -30,6 +30,7 @@
 
 <!--    light-->
     <color name="textColor">#000000</color>
+    <color name="textColorSearch">#000000</color>
     <color name="textColorHome">#FFFFFF</color>
     <color name="background">#FFFFFF</color>
     <color name="imageBTN">#000000</color>

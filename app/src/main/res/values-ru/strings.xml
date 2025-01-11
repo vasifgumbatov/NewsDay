@@ -41,7 +41,7 @@
     <string name="spanish">Spanish(es)</string>
     <string name="german">German(de)</string>
     <string name="english">English(en)</string>
-    <string name="lasted_news">Последние новости</string>
+    <string name="top_news">Главные новости</string>
     <string name="our">Наш</string>
     <string name="community">Сообщество</string>
     <string name="about">О</string>
@@ -50,4 +50,6 @@
     <string name="techcrunch_home">TechCrunch</string>
     <string name="btc_news_news">Новости BTC</string>
     <string name="tech_crunch_news">Новости TechCrunch</string>
+    <string name="apple_news">Новости Apple</string>
+    <string name="apple">Apple</string>
 </resources>

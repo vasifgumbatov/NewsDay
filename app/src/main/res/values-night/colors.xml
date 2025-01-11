@@ -2,6 +2,7 @@
 <resources>
     <!--    night-->
     <color name="textColor">#FFFFFF</color>
+    <color name="textColorSearch">#000000</color>
     <color name="background">#000000</color>
     <color name="imageBTN">#FFFFFF</color>
     <color name="iconColor">#FFFFFF</color>

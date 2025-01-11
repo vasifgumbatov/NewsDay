@@ -1,8 +1,7 @@
-package com.vasifgumbatov.news.ui.home.btcnews
+package com.vasifgumbatov.news.ui.home.applenews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +10,7 @@ import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.ItemChildNewsBinding
 
-class BtcNewsAdapter : ListAdapter<Article, BtcNewsAdapter.BtcViewHolder>(diffUtil) {
+class AppleNewsAdapter : ListAdapter<Article, AppleNewsAdapter.AppleViewHolder>(diffUtil) {
 
     private var onFavoriteClick: ((id: Int) -> Unit)? = null
     private var onItemClick: ((article: Article) -> Unit)? = null
@@ -24,7 +23,7 @@ class BtcNewsAdapter : ListAdapter<Article, BtcNewsAdapter.BtcViewHolder>(diffUt
         this.onItemClick = listener
     }
 
-    inner class BtcViewHolder(private val binding: ItemChildNewsBinding) :
+    inner class AppleViewHolder(private val binding: ItemChildNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article, position: Int) {
             with(binding) {
@@ -52,12 +51,12 @@ class BtcNewsAdapter : ListAdapter<Article, BtcNewsAdapter.BtcViewHolder>(diffUt
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BtcViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppleViewHolder {
         val binding = ItemChildNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return BtcViewHolder(binding)
+        return AppleViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: BtcViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AppleViewHolder, position: Int) {
         holder.bind(getItem(position), position)
     }
 

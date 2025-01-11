@@ -46,7 +46,24 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
         btcNewsVM.fetchNewsBtc("bitcoin", "331cc6318d5f4e4bbdddfe9f3d4d6a93")
     }
 
+    private fun observeNews() {
+        btcNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
+            if (newsList.isNotEmpty()) {
+                val latestNews = newsList.take(10)
+
+                btcNewsAdapter.submitList(latestNews)
+
+                setupLikeClickListeners(latestNews)
+            }
+        })
+
+        btcNewsVM.errorLiveData.observe(viewLifecycleOwner) { errorMessage ->
+            Log.e("BtcNews", "Error: $errorMessage")
+        }
+    }
+
     private fun setUpRecyclerViews() {
+        // Set up the RecyclerView for BTC news
         btcNewsAdapter = BtcNewsAdapter()
 
         btcNewsAdapter.setOnItemClick { article ->
@@ -65,33 +82,9 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
         }
 
         binding?.btcRecyclerView?.apply {
-
             adapter = btcNewsAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-    }
-
-//    private fun observePagedNews() {
-//        lifecycleScope.launch {
-//            btcNewsVM.getPagedNews("331cc6318d5f4e4bbdddfe9f3d4d6a93", "bitcoin")
-//                .collectLatest { pagingData ->
-//                    btcNewsAdapter.submitData(pagingData)
-//                }
-//        }
-//    }
-
-    private fun observeNews() {
-        btcNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
-            binding?.loadingProgressBar?.visibility = View.GONE
-
-            if (newsList.isNotEmpty()) {
-                val latestNews = newsList.take(10)
-
-                btcNewsAdapter.submitList(latestNews)
-
-                setupLikeClickListeners(latestNews)
-            }
-        })
     }
 
     private fun setupLikeClickListeners(

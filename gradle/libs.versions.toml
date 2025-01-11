@@ -1,5 +1,5 @@
 [versions]
-agp = "8.5.0"
+agp = "8.5.2"
 blurview = "version-2.0.3"
 compiler = "4.16.0"
 coreKtxVersion = "1.15.0"
@@ -10,11 +10,10 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
-kotlinxCoroutinesCore = "1.7.3"
+kotlinxCoroutinesCore = "1.8.0"
 material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.2.0"
-pagingRuntime = "3.1.1"
 retrofit = "2.11.0"
 navigationFragmentKtx = "2.8.5"
 navigationUiKtx = "2.8.5"
@@ -22,11 +21,12 @@ safeArgs = "2.8.5"
 room = "2.6.1"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
-coil = "2.4.0"
+coil = "2.6.0"
 okHttp = "4.12.0"
-loggingInterceptor = "4.11.0"
-hilt = "2.48"
+loggingInterceptor = "4.12.0"
+hilt = "2.50"
 paging3 = "3.3.5"
+pagingRuntime = "3.3.5"
 volley = "1.2.1"
 toolsCore = "1.0.0-alpha10"
 
@@ -37,6 +37,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 
 #noinspection SimilarGradleDependency
 androidx-core-ktx-v190 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+#noinspection SimilarGradleDependency
 androidx-paging-runtime-v311 = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
 blurview = { module = "com.github.Dimezis:BlurView", version.ref = "blurview" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
@@ -81,10 +82,10 @@ hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt
 hiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 
 # Paging
+#noinspection SimilarGradleDependency
 paging3 = { module = "androidx.paging:paging-runtime", version.ref = "paging3" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
 androidx-tools-core = { group = "androidx.privacysandbox.tools", name = "tools-core", version.ref = "toolsCore" }
-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
