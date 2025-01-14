@@ -39,11 +39,7 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
         }
 
         binding?.techCrunchBtn?.setOnClickListener {
-            navigateFromParent(R.id.action_main_to_techCrunchNews)
-        }
-
-        binding?.appleBtn?.setOnClickListener {
-            navigateFromParent(R.id.action_mainFragment_to_appleNewsFragment)
+            navigateFromParent(R.id.action_main_to_techNews)
         }
 
         setUpRecyclerViews()

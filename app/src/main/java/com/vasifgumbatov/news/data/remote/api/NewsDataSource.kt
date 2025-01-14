@@ -7,33 +7,27 @@ import retrofit2.http.Query
 
 interface NewsDataSource {
 
+    // Main news
     @GET("top-headlines")
     suspend fun getTopHeadlines(
         @Query("apiKey") apiKey: String,
         @Query("sources") sources: String,
     ): Response<NewsResponse>
 
+    // Tech news
     @GET("top-headlines")
     suspend fun getEverythingTech(
         @Query("apiKey") apiKey: String,
         @Query("sources") sources: String,
     ): Response<NewsResponse>
 
+    // BTC news
     @GET("everything")
     suspend fun getEverythingBTC(
         @Query("apiKey") apiKey: String,
         @Query("q") query: String,
         @Query("pageSize") pageSize: Int,
         @Query("page") page: Int
-    ): Response<NewsResponse>
-
-    @GET("everything")
-    suspend fun getEverythingApple(
-        @Query("apiKey") apiKey: String,
-        @Query("q") query: String,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("sortBy") sortBy: String
     ): Response<NewsResponse>
 
 }

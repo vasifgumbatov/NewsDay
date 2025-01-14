@@ -53,7 +53,8 @@ class BtcNewsAdapter : ListAdapter<Article, BtcNewsAdapter.BtcViewHolder>(diffUt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BtcViewHolder {
-        val binding = ItemChildNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemChildNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BtcViewHolder(binding)
     }
 

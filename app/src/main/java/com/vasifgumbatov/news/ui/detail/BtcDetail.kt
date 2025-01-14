@@ -19,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BtcDetail : CoreFragment<FragmentBtcDetailBinding>() {
-
     private val maxLines = 3
 
     override fun onCreateView(
@@ -49,11 +48,11 @@ class BtcDetail : CoreFragment<FragmentBtcDetailBinding>() {
 
     private fun setUpNewsDetails(
         binding: FragmentBtcDetailBinding,
-        author : String?,
-        title : String?,
-        imageUrl : String?,
-        content : String?,
-        publishedAt : String?
+        author: String?,
+        title: String?,
+        imageUrl: String?,
+        content: String?,
+        publishedAt: String?,
     ) {
 
         binding.newsAuthor.text = author
@@ -67,7 +66,7 @@ class BtcDetail : CoreFragment<FragmentBtcDetailBinding>() {
         setUpViewMore(binding.newsContent)
     }
 
-    private fun setUpViewMore(textView: TextView){
+    private fun setUpViewMore(textView: TextView) {
         val originalText = textView.text.toString()
         textView.text = getTrimmedTextWithViewMore(originalText)
         textView.setOnClickListener {

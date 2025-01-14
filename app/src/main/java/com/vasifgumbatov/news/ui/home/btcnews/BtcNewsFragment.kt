@@ -43,7 +43,10 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
 
         setUpRecyclerViews()
         observeNews()
-        btcNewsVM.fetchNewsBtc("bitcoin", "331cc6318d5f4e4bbdddfe9f3d4d6a93")
+        btcNewsVM.fetchNewsBtc(
+            "bitcoin",
+            "331cc6318d5f4e4bbdddfe9f3d4d6a93"
+        )
     }
 
     private fun observeNews() {
@@ -58,14 +61,14 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
         })
 
         btcNewsVM.errorLiveData.observe(viewLifecycleOwner) { errorMessage ->
-            Log.e("BtcNews", "Error: $errorMessage")
+            Log.e("Btc News", "Error: $errorMessage")
         }
     }
 
     private fun setUpRecyclerViews() {
+
         // Set up the RecyclerView for BTC news
         btcNewsAdapter = BtcNewsAdapter()
-
         btcNewsAdapter.setOnItemClick { article ->
             val bundle = Bundle().apply {
                 putString("author", article.author)

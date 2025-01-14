@@ -20,28 +20,24 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BtcNewsVM @Inject constructor(
-    private val newsApiService: NewsDataSource,
     private val repository: FavoriteNewsRepository,
+    private val getNewsUseCase: GetNewsUseCase,
 ) : ViewModel() {
 
     val newsLiveData = MutableLiveData<List<Article>>()
     val errorLiveData = MutableLiveData<String>()
-    val isLoading = MutableLiveData<Boolean>()
     private var favoriteNew = listOf<FavoriteEntity>()
 
+    // Initialize the favorite news list
     init {
         getFavoriteNews()
     }
 
     fun fetchNewsBtc(q: String, apiKey: String) {
         viewModelScope.launch {
-            isLoading.postValue(true)
-
-            // Fetch BTC news using the GetNewsUseCase
-            val newsResponse = GetNewsUseCase(newsApiService).executeBTCNews(
+            val newsResponse = getNewsUseCase.executeBTCNews(
                 q, apiKey, page = 1, pageSize = 10
             )
-            isLoading.postValue(false)
 
             if (newsResponse != null) {
                 newsResponse.articles.forEach { article ->
@@ -49,17 +45,19 @@ class BtcNewsVM @Inject constructor(
                 }
                 newsLiveData.postValue(newsResponse.articles)
             } else {
-                errorLiveData.postValue("Failed to load news")
+                errorLiveData.postValue("Failed to load news!")
             }
         }
     }
 
+    // Function to get favorite news from the database
     private fun getFavoriteNews() {
         viewModelScope.launch {
             favoriteNew = repository.getLikedNews()
         }
     }
 
+    // Function to add a news article to the database
     fun addBtcNewsToDB(article: Article) {
         viewModelScope.launch {
             val favoriteEntity = FavoriteEntity(

@@ -73,7 +73,7 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
                 putString("publishedAt", article.publishedAt)
             }
 
-            findNavController().navigate(R.id.action_techCrunchNews_to_techCrunchDetail, bundle)
+            findNavController().navigate(R.id.action_techNews_to_techDetail, bundle)
 
         }
 

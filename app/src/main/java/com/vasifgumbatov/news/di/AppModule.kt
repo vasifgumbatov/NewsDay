@@ -22,6 +22,7 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
+    @Singleton
     @NewsRetrofit
     fun provideNewsRetrofit(): Retrofit {
         return Retrofit.Builder()
@@ -31,17 +32,18 @@ object AppModule {
     }
 
     @Provides
+    fun provideNewsApiService(@NewsRetrofit retrofit: Retrofit): NewsDataSource {
+        return retrofit.create(NewsDataSource::class.java)
+    }
+
+    @Provides
+    @Singleton
     @WeatherRetrofit
     fun provideWeatherRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.weatherapi.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    @Provides
-    fun provideNewsApiService(@NewsRetrofit retrofit: Retrofit): NewsDataSource {
-        return retrofit.create(NewsDataSource::class.java)
     }
 
     @Provides
@@ -58,7 +60,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideFavoriteNewsRepository(
-        favoriteDao: FavoriteNewsDao
+        favoriteDao: FavoriteNewsDao,
     ): FavoriteNewsRepository {
         return FavoriteNewsRepository(favoriteDao)
     }
