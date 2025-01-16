@@ -1,7 +1,8 @@
-package com.vasifgumbatov.news.ui.home.btcnews
+package com.vasifgumbatov.news.ui.home.business
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,20 +14,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
-import com.vasifgumbatov.news.databinding.FragmentBtcNewsBinding
+import com.vasifgumbatov.news.databinding.FragmentBusinessBinding
 import com.vasifgumbatov.news.ui.core.CoreFragment
+import com.vasifgumbatov.news.ui.home.btcnews.BtcNewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
-    private val btcNewsVM: BtcNewsVM by viewModels()
-    private var btcNewsAdapter = BtcNewsAdapter()
+class BusinessFragment : CoreFragment<FragmentBusinessBinding>() {
+    private var businessAdapter = BusinessAdapter()
+    private val businessVM: BusinessVM by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentBtcNewsBinding.inflate(inflater, container, false)
+        binding = FragmentBusinessBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -39,29 +41,30 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
 
         setUpRecyclerViews()
         observeNews()
-        btcNewsVM.fetchNewsBtc(
-            "bitcoin",
+        businessVM.fetchNewsBusiness(
+            "us",
+            "business",
             "331cc6318d5f4e4bbdddfe9f3d4d6a93"
         )
     }
 
     private fun observeNews() {
-        btcNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
+        businessVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
             if (newsList.isNotEmpty()) {
                 val latestNews = newsList.take(10)
-                btcNewsAdapter.submitList(latestNews)
+                businessAdapter.submitList(latestNews)
                 setupLikeClickListeners(latestNews)
             }
         })
 
-        btcNewsVM.errorLiveData.observe(viewLifecycleOwner) { errorMessage ->
-            Log.e("Btc News", "Error: $errorMessage")
+        businessVM.errorLiveData.observe(viewLifecycleOwner) { errorMessage ->
+            Log.e("Business News", "Error: $errorMessage")
         }
     }
 
     private fun setUpRecyclerViews() {
-        btcNewsAdapter = BtcNewsAdapter()
-        btcNewsAdapter.setOnItemClick { article ->
+        businessAdapter = BusinessAdapter()
+        businessAdapter.setOnItemClick { article ->
             val bundle = Bundle().apply {
                 putString("author", article.author)
                 putString("title", article.title)
@@ -73,10 +76,11 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
             }
 
             findNavController().navigate(R.id.action_btcNews_to_btcDetail, bundle)
+
         }
 
-        binding?.btcRecyclerView?.apply {
-            adapter = btcNewsAdapter
+        binding?.businessRecyclerView?.apply {
+            adapter = businessAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
     }
@@ -84,18 +88,12 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
     private fun setupLikeClickListeners(
         latestNews: List<Article>,
     ) {
-        btcNewsAdapter.setOnFavoriteClick { position ->
-            val article = latestNews[position]
-            if (article.isLiked) {
-                btcNewsVM.removeBtcNewsFromDB(article)
-                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
-            } else {
-                btcNewsVM.addBtcNewsToDB(article)
-                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
-            }
+        businessAdapter.setOnFavoriteClick { position ->
+            latestNews[position].isLiked = !latestNews[position].isLiked
+            businessAdapter.notifyItemChanged(position)
+            businessVM.addBtcNewsToDB(latestNews[position])
 
-            article.isLiked = !article.isLiked
-            btcNewsAdapter.notifyItemChanged(position)
+            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
         }
     }
 }

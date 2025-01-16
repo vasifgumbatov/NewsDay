@@ -16,6 +16,9 @@ import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.FragmentFavouriteBinding
 import com.vasifgumbatov.news.extensions.navigateFromParent
 import com.vasifgumbatov.news.ui.core.CoreFragment
+import com.vasifgumbatov.news.ui.home.HomeNewsVM
+import com.vasifgumbatov.news.ui.home.btcnews.BtcNewsVM
+import com.vasifgumbatov.news.ui.home.techcrunchnews.TechCrunchVM
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -23,11 +26,14 @@ import javax.inject.Inject
 class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
     private lateinit var favoriteAdapter: FavoriteNewsAdapter
     private val favoriteNewsVM: FavoriteNewsVM by viewModels()
+    private val btcNewsVM: BtcNewsVM by viewModels()
+    private val techNewsVM: TechCrunchVM by viewModels()
+    private val homeNewsVM: HomeNewsVM by viewModels()
     private var allFavorites = emptyList<FavoriteEntity>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentFavouriteBinding.inflate(inflater, container, false)
         return binding?.root
@@ -38,6 +44,7 @@ class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
 
         setUpRecyclerViews()
         observeNews()
+        favoriteNewsVM.observeDeletions(btcNewsVM, techNewsVM, homeNewsVM)
         favoriteNewsVM.getFavorites()
     }
 
@@ -89,5 +96,4 @@ class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
             }
         }
     }
-
 }

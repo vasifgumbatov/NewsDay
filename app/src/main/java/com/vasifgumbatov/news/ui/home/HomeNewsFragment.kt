@@ -42,6 +42,10 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
             navigateFromParent(R.id.action_main_to_techNews)
         }
 
+        binding?.businessBtn?.setOnClickListener {
+            navigateFromParent(R.id.action_main_to_business)
+        }
+
         setUpRecyclerViews()
         observeNews()
         homeNewsVM.fetchNews("bbc-news", "331cc6318d5f4e4bbdddfe9f3d4d6a93")
@@ -112,20 +116,50 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
         latestNews: List<Article>,
         otherNews: List<Article>,
     ) {
-        homeNewsAdapter.setOnFavoriteClick { position ->
-            latestNews[position].isLiked = !latestNews[position].isLiked
-            homeNewsAdapter.notifyItemChanged(position)
-            homeNewsVM.addMainNewsToDB(latestNews[position])
 
-            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
+        homeNewsAdapter.setOnFavoriteClick { position ->
+            val article = latestNews[position]
+            if (article.isLiked) {
+                homeNewsVM.removeBtcNewsFromDB(article)
+                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
+            } else {
+                homeNewsVM.addMainNewsToDB(article)
+                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
+            }
+
+            article.isLiked = !article.isLiked
+            homeNewsAdapter.notifyItemChanged(position)
         }
 
         otherNewsAdapter.setOnFavoriteClick { position ->
-            otherNews[position].isLiked = !otherNews[position].isLiked
-            otherNewsAdapter.notifyItemChanged(position)
-            homeNewsVM.addMainNewsToDB(otherNews[position])
+            val article = otherNews[position]
+            if (article.isLiked) {
+                homeNewsVM.removeBtcNewsFromDB(article)
+                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
+            } else {
+                homeNewsVM.addMainNewsToDB(article)
+                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
+            }
 
-            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
+            article.isLiked = !article.isLiked
+            otherNewsAdapter.notifyItemChanged(position)
         }
+
+
+//        homeNewsAdapter.setOnFavoriteClick { position ->
+//            latestNews[position].isLiked = !latestNews[position].isLiked
+//            homeNewsAdapter.notifyItemChanged(position)
+//            homeNewsVM.addMainNewsToDB(latestNews[position])
+//
+//            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        otherNewsAdapter.setOnFavoriteClick { position ->
+//            otherNews[position].isLiked = !otherNews[position].isLiked
+//            otherNewsAdapter.notifyItemChanged(position)
+//            homeNewsVM.addMainNewsToDB(otherNews[position])
+//
+//            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
+//        }
     }
 }

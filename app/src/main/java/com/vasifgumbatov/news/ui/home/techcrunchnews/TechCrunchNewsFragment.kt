@@ -59,9 +59,7 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
     }
 
     private fun setUpRecyclerViews() {
-        // Set up the RecyclerView for TechCrunch news
         techAdapter = TechCrunchAdapter()
-
         techAdapter.setOnItemClick { article ->
             val bundle = Bundle().apply {
                 putString("author", article.author)
@@ -74,7 +72,6 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
             }
 
             findNavController().navigate(R.id.action_techNews_to_techDetail, bundle)
-
         }
 
         binding?.techRecyclerView?.apply {
@@ -87,11 +84,17 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
         latestNews: List<Article>,
     ) {
         techAdapter.setOnFavoriteClick { position ->
-            latestNews[position].isLiked = !latestNews[position].isLiked
-            techAdapter.notifyItemChanged(position)
-            techNewsVM.addTechNewsToDB(latestNews[position])
+            val article = latestNews[position]
+            if (article.isLiked) {
+                techNewsVM.removeBtcNewsFromDB(article)
+                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
+            } else {
+                techNewsVM.addTechNewsToDB(article)
+                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
+            }
 
-            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
+            article.isLiked = !article.isLiked
+            techAdapter.notifyItemChanged(position)
         }
     }
 }

@@ -50,7 +50,5 @@
     <string name="techcrunch_home">TechCrunch</string>
     <string name="btc_news_news">Noticias BTC</string>
     <string name="tech_crunch_news">Noticias de TechCrunch</string>
-    <string name="usa_news">Noticias de US</string>
-    <string name="apple">Apple</string>
-    <string name="usa">US</string>
+    <string name="business">Negocio</string>
 </resources>

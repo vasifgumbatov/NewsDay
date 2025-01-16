@@ -21,6 +21,14 @@ interface NewsDataSource {
         @Query("sources") sources: String,
     ): Response<NewsResponse>
 
+    // Business news
+    @GET("top-headlines")
+    suspend fun getTopHeadlineBusiness(
+        @Query("country") country: String,
+        @Query("category") category: String,
+        @Query("apiKey") apiKey: String,
+    ): Response<NewsResponse>
+
     // BTC news
     @GET("everything")
     suspend fun getEverythingBTC(

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ClickableSpan
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,19 +12,21 @@ import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
+import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.databinding.FragmentBtcDetailBinding
+import com.vasifgumbatov.news.databinding.FragmentBusinessDetailBinding
 import com.vasifgumbatov.news.ui.core.CoreFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BtcDetail : CoreFragment<FragmentBtcDetailBinding>() {
+class BusinessDetail : CoreFragment<FragmentBusinessDetailBinding>() {
     private val maxLines = 3
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentBtcDetailBinding.inflate(inflater, container, false)
+        binding = FragmentBusinessDetailBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -45,7 +48,7 @@ class BtcDetail : CoreFragment<FragmentBtcDetailBinding>() {
     }
 
     private fun setUpNewsDetails(
-        binding: FragmentBtcDetailBinding,
+        binding: FragmentBusinessDetailBinding,
         author: String?,
         title: String?,
         imageUrl: String?,

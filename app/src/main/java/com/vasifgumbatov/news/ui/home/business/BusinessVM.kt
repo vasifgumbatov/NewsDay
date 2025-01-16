@@ -1,13 +1,11 @@
-package com.vasifgumbatov.news.ui.home
+package com.vasifgumbatov.news.ui.home.business
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vasifgumbatov.news.data.local.entity.FavoriteEntity
 import com.vasifgumbatov.news.data.local.repository.FavoriteNewsRepository
-import com.vasifgumbatov.news.data.remote.api.NewsDataSource
 import com.vasifgumbatov.news.data.remote.interactor.GetNewsUseCase
 import com.vasifgumbatov.news.data.remote.response.Article
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,27 +13,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeNewsVM @Inject constructor(
-    private val getNewsUseCase: GetNewsUseCase,
+class BusinessVM @Inject constructor(
     private val repository: FavoriteNewsRepository,
+    private val getNewsUseCase: GetNewsUseCase,
 ) : ViewModel() {
 
     val newsLiveData = MutableLiveData<List<Article>>()
     val errorLiveData = MutableLiveData<String>()
     private var favoriteNew = listOf<FavoriteEntity>()
 
-    private val _favoriteRemovedLiveData = MutableLiveData<String>()
-    val favoriteRemovedLiveData: LiveData<String> = _favoriteRemovedLiveData
-
     // Initialize the favorite news list
     init {
         getFavoriteNews()
     }
 
-    fun fetchNews(sources: String, apiKey: String) {
+    fun fetchNewsBusiness(country: String, category: String, apiKey: String) {
         viewModelScope.launch {
-            val newsResponse = getNewsUseCase.executeMainNews(
-                sources, apiKey
+            val newsResponse = getNewsUseCase.executeBusinessNews(
+                country, category, apiKey
             )
 
             if (newsResponse != null) {
@@ -57,40 +52,23 @@ class HomeNewsVM @Inject constructor(
     }
 
     // Function to add a news article to the database
-    fun addMainNewsToDB(article: Article) {
+    fun addBtcNewsToDB(article: Article) {
         viewModelScope.launch {
             val favoriteEntity = FavoriteEntity(
                 id = 0,
-                author = article.author!!,
-                title = article.title,
-                description = article.description!!,
-                url = article.url,
-                content = article.content!!,
-                publishedAt = article.publishedAt!!,
+                author = article.author ?: "Unknown",  // Default value for null
+                title = article.title ?: "No Title",
+                description = article.description ?: "No Description",
+                url = article.url ?: "No URL",
+                content = article.content ?: "No Content",
+                publishedAt = article.publishedAt ?: "Unknown Date",
                 isLiked = true,
-                urlToImage = article.urlToImage!!
+                urlToImage = article.urlToImage ?: "No Image"
             )
             try {
                 repository.insertFavorite(favoriteEntity)
             } catch (e: Exception) {
-                Log.e("Add to database", "Error adding to database: ${e.message}")
-            }
-        }
-    }
-
-    fun removeBtcNewsFromDB(article: Article) {
-        viewModelScope.launch {
-            try {
-                val existingFavorite = repository.getLikedNews().find { it.title == article.title }
-                if (existingFavorite != null) {
-                    repository.deleteFavorite(existingFavorite)
-                    Log.d("Database", "Deleted from favorites: ${article.title}")
-                    _favoriteRemovedLiveData.postValue(article.title)
-                } else {
-                    Log.e("Database", "Error: Article not found in DB!")
-                }
-            } catch (e: Exception) {
-                Log.e("Database", "Error removing from database: ${e.message}")
+                Log.e("AddToDB", "Error adding to database: ${e.message}")
             }
         }
     }

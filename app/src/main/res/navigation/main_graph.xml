@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_main_to_techNews"
             app:destination="@id/techCrunchNewsFragment" />
+        <action
+            android:id="@+id/action_main_to_business"
+            app:destination="@id/businessFragment" />
     </fragment>
 
     <fragment
@@ -77,4 +80,18 @@
         android:name="com.vasifgumbatov.news.ui.detail.TechCrunchDetail"
         android:label="fragment_tech_crunch_detail"
         tools:layout="@layout/fragment_tech_crunch_detail" />
+    <fragment
+        android:id="@+id/businessFragment"
+        android:name="com.vasifgumbatov.news.ui.home.business.BusinessFragment"
+        android:label="fragment_business"
+        tools:layout="@layout/fragment_business" >
+        <action
+            android:id="@+id/action_business_to_businessDetail"
+            app:destination="@id/businessDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/businessDetail"
+        android:name="com.vasifgumbatov.news.ui.detail.BusinessDetail"
+        android:label="fragment_business_detail"
+        tools:layout="@layout/fragment_business_detail" />
 </navigation>

@@ -47,4 +47,21 @@ class GetNewsUseCase @Inject constructor(private val newsApiService: NewsDataSou
             null
         }
     }
+
+    suspend fun executeBusinessNews(
+        apiKey: String,
+        country: String,
+        category: String,
+    ): NewsResponse? {
+        return try {
+            val response = newsApiService.getTopHeadlineBusiness(country, apiKey, category)
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
 }
