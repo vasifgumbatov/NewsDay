@@ -40,6 +40,7 @@ class BtcDetail : CoreFragment<FragmentBtcDetailBinding>() {
             arguments?.getString("title"),
             arguments?.getString("imageUrl"),
             arguments?.getString("content"),
+            arguments?.getString("description"),
             arguments?.getString("publishedAt")
         )
     }
@@ -50,13 +51,19 @@ class BtcDetail : CoreFragment<FragmentBtcDetailBinding>() {
         title: String?,
         imageUrl: String?,
         content: String?,
-        publishedAt: String?,
+        description: String?,
+        publishedAt: String?
     ) {
 
         binding.newsAuthor.text = author
         binding.newsTitle.text = title
         binding.publishedTime.text = publishedAt
         binding.newsContent.text = content
+        binding.newsDescription.text = description
+
+        // NEW: Combine description and content
+        val combinedText = "${description ?: ""}\n\n${content ?: ""}"
+        binding.newsContent.text = combinedText
 
         Glide.with(this)
             .load(imageUrl)

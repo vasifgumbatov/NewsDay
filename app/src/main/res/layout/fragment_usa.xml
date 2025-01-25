@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.business.BusinessFragment">
+    tools:context=".ui.home.usanews.USAFragment">
 
     <ImageButton
         android:id="@+id/backToHome"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/new_york_small_bold"
-        android:text="@string/btc_news_news"
+        android:text="@string/usa_news"
         android:textAlignment="center"
         android:textColor="@color/textColor"
         android:textSize="27sp"

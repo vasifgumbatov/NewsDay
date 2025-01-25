@@ -8,6 +8,7 @@ import com.vasifgumbatov.news.data.local.entity.FavoriteEntity
 import com.vasifgumbatov.news.data.local.repository.FavoriteNewsRepository
 import com.vasifgumbatov.news.ui.home.HomeNewsVM
 import com.vasifgumbatov.news.ui.home.btcnews.BtcNewsVM
+import com.vasifgumbatov.news.ui.home.usanews.USANewsVM
 import com.vasifgumbatov.news.ui.home.techcrunchnews.TechCrunchVM
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteNewsVM @Inject constructor(
-    private val repository: FavoriteNewsRepository,
+    private val repository: FavoriteNewsRepository
 ) : ViewModel() {
 
     val newsLiveData = MutableLiveData<List<FavoriteEntity>>()
@@ -41,7 +42,7 @@ class FavoriteNewsVM @Inject constructor(
     }
 
     // Observe deletions from BtcNewsVM
-    fun observeDeletions(btcNewsVM: BtcNewsVM, techNewsVM: TechCrunchVM, homeNewsVM: HomeNewsVM) {
+    fun observeDeletions(btcNewsVM: BtcNewsVM, techNewsVM: TechCrunchVM, homeNewsVM: HomeNewsVM, USANewsVM: USANewsVM) {
         btcNewsVM.favoriteRemovedLiveData.observeForever { deletedTitle ->
             Log.d("FavoriteVM", "Removing $deletedTitle from favorites")
             viewModelScope.launch {
@@ -63,6 +64,16 @@ class FavoriteNewsVM @Inject constructor(
         }
 
         homeNewsVM.favoriteRemovedLiveData.observeForever { deletedTitle ->
+            Log.d("FavoriteVM", "Removing $deletedTitle from favorites")
+            viewModelScope.launch {
+                val favoriteToRemove = repository.getAllNews().find { it.title == deletedTitle }
+                if (favoriteToRemove != null) {
+                    deleteFavorite(favoriteToRemove)
+                }
+            }
+        }
+
+        USANewsVM.favoriteRemovedLiveData.observeForever { deletedTitle ->
             Log.d("FavoriteVM", "Removing $deletedTitle from favorites")
             viewModelScope.launch {
                 val favoriteToRemove = repository.getAllNews().find { it.title == deletedTitle }

@@ -7,20 +7,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.local.entity.FavoriteEntity
-import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.FragmentFavouriteBinding
 import com.vasifgumbatov.news.extensions.navigateFromParent
 import com.vasifgumbatov.news.ui.core.CoreFragment
 import com.vasifgumbatov.news.ui.home.HomeNewsVM
 import com.vasifgumbatov.news.ui.home.btcnews.BtcNewsVM
+import com.vasifgumbatov.news.ui.home.usanews.USANewsVM
 import com.vasifgumbatov.news.ui.home.techcrunchnews.TechCrunchVM
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
@@ -29,6 +26,7 @@ class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
     private val btcNewsVM: BtcNewsVM by viewModels()
     private val techNewsVM: TechCrunchVM by viewModels()
     private val homeNewsVM: HomeNewsVM by viewModels()
+    private val USANewsVM: USANewsVM by viewModels()
     private var allFavorites = emptyList<FavoriteEntity>()
 
     override fun onCreateView(
@@ -44,7 +42,7 @@ class FavoriteNewsFragment : CoreFragment<FragmentFavouriteBinding>() {
 
         setUpRecyclerViews()
         observeNews()
-        favoriteNewsVM.observeDeletions(btcNewsVM, techNewsVM, homeNewsVM)
+        favoriteNewsVM.observeDeletions(btcNewsVM, techNewsVM, homeNewsVM, USANewsVM)
         favoriteNewsVM.getFavorites()
     }
 

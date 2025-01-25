@@ -20,10 +20,12 @@ class HomeNewsVM @Inject constructor(
     private val repository: FavoriteNewsRepository,
 ) : ViewModel() {
 
+    // LiveData for news articles
     val newsLiveData = MutableLiveData<List<Article>>()
     val errorLiveData = MutableLiveData<String>()
     private var favoriteNew = listOf<FavoriteEntity>()
 
+    // LiveData for favorite news removal
     private val _favoriteRemovedLiveData = MutableLiveData<String>()
     val favoriteRemovedLiveData: LiveData<String> = _favoriteRemovedLiveData
 
@@ -53,6 +55,12 @@ class HomeNewsVM @Inject constructor(
     private fun getFavoriteNews() {
         viewModelScope.launch {
             favoriteNew = repository.getLikedNews()
+            newsLiveData.value?.let { newsList ->
+                newsList.forEach { article ->
+                    article.isLiked = favoriteNew.any { it.title == article.title }
+                }
+                newsLiveData.postValue(newsList)
+            }
         }
     }
 
@@ -61,29 +69,32 @@ class HomeNewsVM @Inject constructor(
         viewModelScope.launch {
             val favoriteEntity = FavoriteEntity(
                 id = 0,
-                author = article.author!!,
+                author = article.author ?: "",
                 title = article.title,
-                description = article.description!!,
+                description = article.description ?: "",
                 url = article.url,
-                content = article.content!!,
-                publishedAt = article.publishedAt!!,
+                content = article.content ?: "",
+                publishedAt = article.publishedAt ?: "",
                 isLiked = true,
-                urlToImage = article.urlToImage!!
+                urlToImage = article.urlToImage ?: ""
             )
             try {
                 repository.insertFavorite(favoriteEntity)
+                getFavoriteNews()
             } catch (e: Exception) {
                 Log.e("Add to database", "Error adding to database: ${e.message}")
             }
         }
     }
 
+    // Remove a news article from the database
     fun removeBtcNewsFromDB(article: Article) {
         viewModelScope.launch {
             try {
                 val existingFavorite = repository.getLikedNews().find { it.title == article.title }
                 if (existingFavorite != null) {
                     repository.deleteFavorite(existingFavorite)
+                    getFavoriteNews()
                     Log.d("Database", "Deleted from favorites: ${article.title}")
                     _favoriteRemovedLiveData.postValue(article.title)
                 } else {

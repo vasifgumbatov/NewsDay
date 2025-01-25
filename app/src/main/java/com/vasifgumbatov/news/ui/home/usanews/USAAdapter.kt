@@ -1,4 +1,4 @@
-package com.vasifgumbatov.news.ui.home.business
+package com.vasifgumbatov.news.ui.home.usanews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.ItemChildNewsBinding
 
-class BusinessAdapter : ListAdapter<Article, BusinessAdapter.BusinessViewHolder>(diffUtil) {
+class USAAdapter : ListAdapter<Article, USAAdapter.BusinessViewHolder>(diffUtil) {
 
     private var onFavoriteClick: ((id: Int) -> Unit)? = null
     private var onItemClick: ((article: Article) -> Unit)? = null

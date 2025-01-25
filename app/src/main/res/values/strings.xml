@@ -51,7 +51,7 @@
     <string name="btc_news_news">BTC News</string>
     <string name="tech_crunch_news">Tech Crunch News</string>
     <string name="business">Business</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="usa_news">USA News</string>
+    <string name="description">Description</string>
 
 </resources>

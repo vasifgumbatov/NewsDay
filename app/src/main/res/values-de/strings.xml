@@ -51,4 +51,6 @@
     <string name="btc_news_news">BTC Nachrichten</string>
     <string name="tech_crunch_news">TechCrunch Nachrichten</string>
     <string name="business">Geschäft</string>
+    <string name="usa_news">USA-Nachrichten</string>
+    <string name="description">Description</string>
 </resources>

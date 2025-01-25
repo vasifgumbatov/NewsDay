@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.databinding.ActivityMainBinding
 import com.vasifgumbatov.news.extensions.setStatusBarColors
@@ -28,10 +29,13 @@ class MainActivity : AppCompatActivity() {
         // statusBar color
         setStatusBarColors(R.color.background)
 
+        // language
         LanguageHelper.applyLocale(this)
 
+        // theme
         sharedPreferences = getSharedPreferences("theme", MODE_PRIVATE)
 
+        // observe theme
         themeVM.theme.observe(this) { isDarkMode ->
             setTheme(isDarkMode)
             setDarkMode(isDarkMode)
@@ -82,5 +86,4 @@ class MainActivity : AppCompatActivity() {
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LanguageHelper.applyLocale(newBase))
     }
-
 }

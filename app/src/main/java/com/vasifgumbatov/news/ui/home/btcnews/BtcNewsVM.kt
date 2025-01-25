@@ -21,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class BtcNewsVM @Inject constructor(
     private val repository: FavoriteNewsRepository,
-    private val getNewsUseCase: GetNewsUseCase,
+    private val getNewsUseCase: GetNewsUseCase
 ) : ViewModel() {
 
     val newsLiveData = MutableLiveData<List<Article>>()
@@ -60,7 +60,7 @@ class BtcNewsVM @Inject constructor(
         }
     }
 
-
+    // Function to add a news article to the database
     fun addBtcNewsToDB(article: Article) {
         viewModelScope.launch {
             val favoriteEntity = FavoriteEntity(

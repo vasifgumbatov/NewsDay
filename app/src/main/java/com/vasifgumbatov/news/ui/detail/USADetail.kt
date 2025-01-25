@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ClickableSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,21 +11,19 @@ import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
-import com.vasifgumbatov.news.R
-import com.vasifgumbatov.news.databinding.FragmentBtcDetailBinding
-import com.vasifgumbatov.news.databinding.FragmentBusinessDetailBinding
+import com.vasifgumbatov.news.databinding.FragmentUsaDetailBinding
 import com.vasifgumbatov.news.ui.core.CoreFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BusinessDetail : CoreFragment<FragmentBusinessDetailBinding>() {
+class USADetail : CoreFragment<FragmentUsaDetailBinding>() {
     private val maxLines = 3
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentBusinessDetailBinding.inflate(inflater, container, false)
+        binding = FragmentUsaDetailBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -43,23 +40,30 @@ class BusinessDetail : CoreFragment<FragmentBusinessDetailBinding>() {
             arguments?.getString("title"),
             arguments?.getString("imageUrl"),
             arguments?.getString("content"),
+            arguments?.getString("description"),
             arguments?.getString("publishedAt")
         )
     }
 
     private fun setUpNewsDetails(
-        binding: FragmentBusinessDetailBinding,
+        binding: FragmentUsaDetailBinding,
         author: String?,
         title: String?,
         imageUrl: String?,
         content: String?,
-        publishedAt: String?,
+        description: String?,
+        publishedAt: String?
     ) {
 
         binding.newsAuthor.text = author
         binding.newsTitle.text = title
         binding.publishedTime.text = publishedAt
         binding.newsContent.text = content
+        binding.newsDescription.text = description
+
+        // NEW: Combine description and content
+        val combinedText = "${description ?: ""}\n\n${content ?: ""}"
+        binding.newsContent.text = combinedText
 
         Glide.with(this)
             .load(imageUrl)

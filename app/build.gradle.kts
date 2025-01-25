@@ -57,24 +57,28 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // Navigation
     implementation(libs.bundles.navigationLibs)
 
     implementation(libs.bundles.networking)
 
-
+    // Room
     implementation(libs.room.runtime)
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
     implementation(libs.androidx.room.ktx)
 
+    // ViewModel && LiveData
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
+    // Glide
     implementation(libs.coil)
     implementation(libs.glide)
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.glide.compiler)
 
+    // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
@@ -82,12 +86,15 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
 
-    //Paging
+    // Paging
     implementation(libs.paging3)
-    implementation (libs.androidx.paging.runtime.v311)
+    implementation(libs.androidx.paging.runtime.v311)
     implementation(libs.volley)
 
     // Blur
-    implementation (libs.blurview)
+    implementation(libs.blurview)
+
+    // Splash screen
+    implementation(libs.androidx.core.splashscreen)
 
 }

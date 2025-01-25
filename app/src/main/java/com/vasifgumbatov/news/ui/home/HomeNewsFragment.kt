@@ -1,5 +1,6 @@
 package com.vasifgumbatov.news.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.Article
 import com.vasifgumbatov.news.databinding.FragmentHomeBinding
@@ -43,7 +42,7 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
         }
 
         binding?.businessBtn?.setOnClickListener {
-            navigateFromParent(R.id.action_main_to_business)
+            navigateFromParent(R.id.action_main_to_usa)
         }
 
         setUpRecyclerViews()
@@ -91,14 +90,16 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
             }
             navigateFromParent(R.id.action_main_to_homeDetail, bundle)
         }
-
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun observeNews() {
         homeNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
             if (newsList.isNotEmpty()) {
                 val latestNews = newsList.take(5)
                 val otherNews = newsList.drop(5)
+
+                binding?.progressBar?.visibility = View.GONE
 
                 homeNewsAdapter.submitList(latestNews)
                 otherNewsAdapter.submitList(otherNews)
@@ -110,6 +111,11 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
         homeNewsVM.errorLiveData.observe(viewLifecycleOwner, Observer { errorMessage ->
             Log.e("HomeNewsFragment", "Error: $errorMessage")
         })
+
+        homeNewsVM.favoriteRemovedLiveData.observe(viewLifecycleOwner) {
+            homeNewsAdapter.notifyDataSetChanged()
+            otherNewsAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun setupLikeClickListeners(
@@ -119,47 +125,30 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
 
         homeNewsAdapter.setOnFavoriteClick { position ->
             val article = latestNews[position]
-            if (article.isLiked) {
-                homeNewsVM.removeBtcNewsFromDB(article)
-                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
-            } else {
-                homeNewsVM.addMainNewsToDB(article)
-                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
-            }
-
             article.isLiked = !article.isLiked
             homeNewsAdapter.notifyItemChanged(position)
+
+            if (article.isLiked) {
+                homeNewsVM.addMainNewsToDB(article)
+                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
+            } else {
+                homeNewsVM.removeBtcNewsFromDB(article)
+                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
+            }
         }
 
         otherNewsAdapter.setOnFavoriteClick { position ->
             val article = otherNews[position]
-            if (article.isLiked) {
-                homeNewsVM.removeBtcNewsFromDB(article)
-                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
-            } else {
-                homeNewsVM.addMainNewsToDB(article)
-                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
-            }
-
             article.isLiked = !article.isLiked
             otherNewsAdapter.notifyItemChanged(position)
+
+            if (article.isLiked) {
+                homeNewsVM.addMainNewsToDB(article)
+                Toast.makeText(context, "Added to database", Toast.LENGTH_SHORT).show()
+            } else {
+                homeNewsVM.removeBtcNewsFromDB(article)
+                Toast.makeText(context, "Deleted from database", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
-//        homeNewsAdapter.setOnFavoriteClick { position ->
-//            latestNews[position].isLiked = !latestNews[position].isLiked
-//            homeNewsAdapter.notifyItemChanged(position)
-//            homeNewsVM.addMainNewsToDB(latestNews[position])
-//
-//            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        otherNewsAdapter.setOnFavoriteClick { position ->
-//            otherNews[position].isLiked = !otherNews[position].isLiked
-//            otherNewsAdapter.notifyItemChanged(position)
-//            homeNewsVM.addMainNewsToDB(otherNews[position])
-//
-//            Toast.makeText(context, "Add successfully!", Toast.LENGTH_SHORT).show()
-//        }
     }
 }

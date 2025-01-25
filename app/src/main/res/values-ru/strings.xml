@@ -51,4 +51,6 @@
     <string name="btc_news_news">Новости BTC</string>
     <string name="tech_crunch_news">Новости TechCrunch</string>
     <string name="business">Бизнес</string>
+    <string name="usa_news">Новости США</string>
+    <string name="description">Description</string>
 </resources>

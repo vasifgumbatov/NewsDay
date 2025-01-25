@@ -21,11 +21,10 @@ interface NewsDataSource {
         @Query("sources") sources: String,
     ): Response<NewsResponse>
 
-    // Business news
+    // USA news
     @GET("top-headlines")
     suspend fun getTopHeadlineBusiness(
         @Query("country") country: String,
-        @Query("category") category: String,
         @Query("apiKey") apiKey: String,
     ): Response<NewsResponse>
 
