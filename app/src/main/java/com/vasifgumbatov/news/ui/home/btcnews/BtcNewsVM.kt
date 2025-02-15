@@ -36,6 +36,7 @@ class BtcNewsVM @Inject constructor(
         getFavoriteNews()
     }
 
+    // Function to fetch news from the API
     fun fetchNewsBtc(q: String, apiKey: String) {
         viewModelScope.launch {
             val newsResponse = getNewsUseCase.executeBTCNews(

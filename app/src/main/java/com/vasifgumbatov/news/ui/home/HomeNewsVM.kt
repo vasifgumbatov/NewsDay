@@ -34,6 +34,7 @@ class HomeNewsVM @Inject constructor(
         getFavoriteNews()
     }
 
+    // Function to fetch news from the API
     fun fetchNews(sources: String, apiKey: String) {
         viewModelScope.launch {
             val newsResponse = getNewsUseCase.executeMainNews(

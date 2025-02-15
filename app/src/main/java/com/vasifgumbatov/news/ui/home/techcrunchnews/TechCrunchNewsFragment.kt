@@ -1,6 +1,8 @@
 package com.vasifgumbatov.news.ui.home.techcrunchnews
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -39,9 +41,11 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
 
         setUpRecyclerViews()
         observeTechVM()
+        setupSwipeRefresh()
         techNewsVM.fetchTechNews("techcrunch", "331cc6318d5f4e4bbdddfe9f3d4d6a93")
     }
 
+    // Observe news articles
     private fun observeTechVM() {
         techNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
             if (newsList.isNotEmpty()) {
@@ -95,6 +99,13 @@ class TechCrunchNewsFragment : CoreFragment<FragmentTechCrunchNewsBinding>() {
 
             article.isLiked = !article.isLiked
             techAdapter.notifyItemChanged(position)
+        }
+    }
+
+    private fun setupSwipeRefresh() {
+        binding?.swipeRefreshLayout?.setOnRefreshListener {
+            techNewsVM.fetchTechNews("techcrunch", "331cc6318d5f4e4bbdddfe9f3d4d6a93")
+            binding?.swipeRefreshLayout?.isRefreshing = false
         }
     }
 }

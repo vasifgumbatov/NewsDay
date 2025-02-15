@@ -32,17 +32,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/techRecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/techCrunchTV"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_child_news" />
+        app:layout_constraintTop_toBottomOf="@id/techCrunchTV">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/techRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/techCrunchTV"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_child_news" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

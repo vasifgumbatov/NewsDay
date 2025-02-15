@@ -39,6 +39,7 @@ class USAFragment : CoreFragment<FragmentUsaBinding>() {
 
         setUpRecyclerViews()
         observeNews()
+        setupSwipeRefresh()
         usaNewsVM.fetchNewsBusiness(
             "us",
             "331cc6318d5f4e4bbdddfe9f3d4d6a93"
@@ -96,6 +97,16 @@ class USAFragment : CoreFragment<FragmentUsaBinding>() {
 
             article.isLiked = !article.isLiked
             usaAdapter.notifyItemChanged(position)
+        }
+    }
+
+    private fun setupSwipeRefresh() {
+        binding?.swipeRefreshLayout?.setOnRefreshListener {
+            usaNewsVM.fetchNewsBusiness(
+                "us",
+                "331cc6318d5f4e4bbdddfe9f3d4d6a93"
+            )
+            binding?.swipeRefreshLayout?.isRefreshing = false
         }
     }
 }

@@ -32,6 +32,7 @@ class TechCrunchVM @Inject constructor(
         getFavoriteNews()
     }
 
+    // Function to fetch news from the API
     fun fetchTechNews(sources: String, apiKey: String) {
         viewModelScope.launch {
             val newsResponse = getNewsUseCase.executeTechNews(

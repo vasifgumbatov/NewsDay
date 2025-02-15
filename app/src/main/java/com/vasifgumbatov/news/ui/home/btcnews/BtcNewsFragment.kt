@@ -39,12 +39,14 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
 
         setUpRecyclerViews()
         observeNews()
+        setupSwipeRefresh()
         btcNewsVM.fetchNewsBtc(
             "bitcoin",
             "331cc6318d5f4e4bbdddfe9f3d4d6a93"
         )
     }
 
+    // Observe news articles
     private fun observeNews() {
         btcNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
             if (newsList.isNotEmpty()) {
@@ -96,6 +98,16 @@ class BtcNewsFragment : CoreFragment<FragmentBtcNewsBinding>() {
 
             article.isLiked = !article.isLiked
             btcNewsAdapter.notifyItemChanged(position)
+        }
+    }
+
+    private fun setupSwipeRefresh() {
+        binding?.swipeRefreshLayout?.setOnRefreshListener {
+            btcNewsVM.fetchNewsBtc(
+                "bitcoin",
+                "331cc6318d5f4e4bbdddfe9f3d4d6a93"
+            )
+            binding?.swipeRefreshLayout?.isRefreshing = false
         }
     }
 }

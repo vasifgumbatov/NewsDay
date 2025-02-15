@@ -93,6 +93,7 @@ class HomeNewsFragment : CoreFragment<FragmentHomeBinding>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
+    // Observe news articles
     private fun observeNews() {
         homeNewsVM.newsLiveData.observe(viewLifecycleOwner, Observer { newsList ->
             if (newsList.isNotEmpty()) {
