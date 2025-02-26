@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.data.remote.response.CurrentWeather
 import com.vasifgumbatov.news.databinding.ItemWeatherBinding
 
 class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
-
     private var weatherList: List<CurrentWeather> = listOf()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -24,14 +24,13 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
             with(binding) {
                 tempText.text = weather.temperature.toString()
                 weatherText.text = weather.condition.text
-                weatherIcon.contentDescription = weather.condition.text
                 cityText.text = weather.condition.text
                 lastUpdatedTV.text = weather.lastUpdated
-            }
 
-            Glide.with(binding.weatherIcon.context)
-                .load(weather.condition.icon)
-                .into(binding.weatherIcon)
+                Glide.with(binding.root)
+                    .load("https:${weather.condition.icon}")
+                    .into(weatherIcon)
+            }
         }
     }
 

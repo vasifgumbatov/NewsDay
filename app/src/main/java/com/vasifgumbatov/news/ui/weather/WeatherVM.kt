@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
+import com.vasifgumbatov.news.R
 import com.vasifgumbatov.news.util.ApiState
 import com.vasifgumbatov.news.data.remote.response.ErrorModel
 import com.vasifgumbatov.news.data.remote.api.WeatherDataSource
@@ -17,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WeatherVM @Inject constructor(
-    private val weatherApiService: WeatherDataSource
+    private val weatherApiService: WeatherDataSource,
 ) : ViewModel() {
     fun getWeatherData(): LiveData<WeatherResponse> = weatherData
     private val weatherData = MutableLiveData<WeatherResponse>()
@@ -34,6 +35,13 @@ class WeatherVM @Inject constructor(
                 }
 
                 is ApiState.Error -> {
+                    val error = result.error
+                    // Handle the error
+                    if (error != null) {
+                        println("Error: ${error.errorTitle} - ${error.errorDescription}")
+                    } else {
+                        println("Unknown error occurred")
+                    }
                 }
             }
         }
@@ -53,7 +61,11 @@ class WeatherVM @Inject constructor(
         } catch (e: Exception) {
             e.printStackTrace()
             ApiState.Error(
-                ErrorModel(errorCode = 505, errorTitle = "Xeta", errorDescription = "Sistem xetasi")
+                ErrorModel(
+                    errorCode = 505,
+                    errorTitle = "Error!",
+                    errorDescription = "System error!"
+                )
             )
         }
     }

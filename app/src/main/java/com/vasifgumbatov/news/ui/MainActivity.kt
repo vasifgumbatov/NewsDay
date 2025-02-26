@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         // theme
         sharedPreferences = getSharedPreferences("theme", MODE_PRIVATE)
+        checkTheme()
 
         // observe theme
         themeVM.theme.observe(this) { isDarkMode ->

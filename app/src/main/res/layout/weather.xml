@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <EditText
+        android:id="@+id/search_city_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/search_bar_background"
+        android:hint="@string/search_by_city_or_country"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toEndOf="@id/search_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/search"
+        android:src="@drawable/ic_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="5dp"
+        android:fontFamily="@font/new_york_small_regular"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="37sp"
+        app:drawableStartCompat="@drawable/ic_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_city_input"
+        tools:text="Baku" />
+
+    <LinearLayout
+        android:id="@+id/liner"
+        android:layout_width="150dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cityText">
+
+        <View
+            android:id="@+id/roundedShapeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rounded_top_white_weather" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tempText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular_font"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        app:layout_constraintStart_toStartOf="@id/liner"
+        app:layout_constraintEnd_toEndOf="@id/liner"
+        app:layout_constraintTop_toTopOf="@id/liner"
+        app:layout_constraintBottom_toBottomOf="@id/liner"
+        tools:text="30.0" />
+
+    <TextView
+        android:id="@+id/weatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/new_york_small_regular"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="37sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/liner"
+        tools:text="Sunny" />
+
+    <TextView
+        android:id="@+id/lastUpdatedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:drawablePadding="5dp"
+        android:fontFamily="@font/new_york_small_regular"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:drawableStartCompat="@drawable/clock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weatherText"
+        tools:text="2020-02-02 22:22" />
+
+    <ImageView
+        android:id="@+id/weatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lastUpdatedTV"
+        android:layout_marginTop="100dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

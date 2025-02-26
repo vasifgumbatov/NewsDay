@@ -9,9 +9,7 @@ import javax.inject.Inject
 
 @HiltAndroidApp
 class MyApplication : Application() {
-
     override fun onCreate() {
         super.onCreate()
     }
-
 }

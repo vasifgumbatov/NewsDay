@@ -16,10 +16,20 @@ data class WeatherLocation(
 data class CurrentWeather(
     @SerializedName("temp_c")
     var temperature: Double,
+    @SerializedName("temp_f")
+    var temperatureFahrenheit: Double,
     @SerializedName("condition")
     var condition: Condition,
     @SerializedName("last_updated")
-    var lastUpdated: String
+    var lastUpdated: String,
+    @SerializedName("wind_kph")
+    var windSpeedK: Double,
+    @SerializedName("wind_dir")
+    var windDirection: String,
+    @SerializedName("humidity")
+    var humidity: Int,
+    @SerializedName("cloud")
+    var cloud: Int
 )
 
 data class Condition(

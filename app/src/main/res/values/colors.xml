@@ -13,6 +13,7 @@
     <color name="detail_button">#979696</color>
     <color name="selected">#FF3A44</color>
     <color name="unSelected">#808080</color>
+    <color name="weatherColor">#979797</color>
     <color name="profileBG">#242424</color>
     <color name="backBG">#EEF1F4</color>
     <color name="transparent">#00000000</color>
