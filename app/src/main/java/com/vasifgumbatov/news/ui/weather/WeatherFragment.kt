@@ -58,16 +58,6 @@ class WeatherFragment : CoreFragment<FragmentWeatherBinding>() {
             }
         })
 
-//        binding?.searchButton?.setOnClickListener {
-//            val cityName = binding?.searchCityInput?.text.toString()
-//            if (cityName.isNotEmpty()) {
-//                weatherVM.getWeather(cityName, apiKey)
-//            } else {
-//                Toast.makeText(context, "Please enter a city or country name", Toast.LENGTH_SHORT)
-//                    .show()
-//            }
-//        }
-
         binding?.searchCityInput?.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE) {
                 searchWeather()
